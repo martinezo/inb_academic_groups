@@ -1,0 +1,2 @@
+module MemberPublicationsHelper
+end

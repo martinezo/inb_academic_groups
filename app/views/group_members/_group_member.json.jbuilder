@@ -1,0 +1,2 @@
+json.extract! group_member, :id, :group_id, :firstname, :lastname, :photo_file_name, :email, :phone_numbers, :academic_career_es, :academic_career_en, :research_interest_es, :research_interests_en, :photo_res_file_name, :photo_res_descr_es, :photo_res_descr_en, :catalogs_member_type_id, :catalogs_status_id, :current_position_es, :current_position_en, :current_workplace, :created_at, :updated_at
+json.url group_member_url(group_member, format: :json)

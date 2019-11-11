@@ -1,0 +1,2 @@
+module Catalogs::PubTypesHelper
+end

@@ -1,0 +1,27 @@
+-# frozen_string_literal: true
+= simple_form_for(@group_member) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  .form-inputs
+    = f.association :group, label_method: :name_es
+    = f.input :firstname
+    = f.input :lastname
+    = f.input :photo_file_name
+    = f.input :email
+    = f.input :phone_numbers
+    = f.input :academic_career_es
+    = f.input :academic_career_en
+    = f.input :research_interest_es
+    = f.input :research_interests_en
+    = f.input :photo_res_file_name
+    = f.input :photo_res_descr_es
+    = f.input :photo_res_descr_en
+    = f.association :catalogs_member_type, label_method: :name_es
+    = f.association :catalogs_status
+    = f.input :current_position_es
+    = f.input :current_position_en
+    = f.input :current_workplace
+
+  .form-actions
+    = f.button :submit

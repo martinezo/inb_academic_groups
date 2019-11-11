@@ -1,0 +1,21 @@
+%h1 Listing catalogs_statuses
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th
+      %th
+      %th
+
+  %tbody
+    - @catalogs_statuses.each do |catalogs_status|
+      %tr
+        %td= catalogs_status.name
+        %td= link_to 'Show', catalogs_status
+        %td= link_to 'Edit', edit_catalogs_status_path(catalogs_status)
+        %td= link_to 'Destroy', catalogs_status, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Status', new_catalogs_status_path

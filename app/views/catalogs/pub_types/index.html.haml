@@ -1,0 +1,23 @@
+%h1 Listing catalogs_pub_types
+
+%table
+  %thead
+    %tr
+      %th Name es
+      %th Name en
+      %th
+      %th
+      %th
+
+  %tbody
+    - @catalogs_pub_types.each do |catalogs_pub_type|
+      %tr
+        %td= catalogs_pub_type.name_es
+        %td= catalogs_pub_type.name_en
+        %td= link_to 'Show', catalogs_pub_type
+        %td= link_to 'Edit', edit_catalogs_pub_type_path(catalogs_pub_type)
+        %td= link_to 'Destroy', catalogs_pub_type, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Pub type', new_catalogs_pub_type_path

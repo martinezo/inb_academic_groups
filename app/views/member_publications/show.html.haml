@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Group member:
+  = @member_publication.group_member
+%p
+  %b Publication:
+  = @member_publication.publication
+
+= link_to 'Edit', edit_member_publication_path(@member_publication)
+\|
+= link_to 'Back', member_publications_path

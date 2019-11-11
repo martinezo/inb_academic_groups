@@ -1,0 +1,12 @@
+-# frozen_string_literal: true
+= simple_form_for(@catalogs_location) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  .form-inputs
+    = f.input :abbr
+    = f.input :name_es
+    = f.input :name_en
+
+  .form-actions
+    = f.button :submit

@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name es:
+  = @link.name_es
+%p
+  %b Name en:
+  = @link.name_en
+%p
+  %b Link:
+  = @link.link
+
+= link_to 'Edit', edit_link_path(@link)
+\|
+= link_to 'Back', links_path

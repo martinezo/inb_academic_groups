@@ -1,0 +1,23 @@
+%h1 Listing member_publications
+
+%table
+  %thead
+    %tr
+      %th Group member
+      %th Publication
+      %th
+      %th
+      %th
+
+  %tbody
+    - @member_publications.each do |member_publication|
+      %tr
+        %td= member_publication.group_member
+        %td= member_publication.publication
+        %td= link_to 'Show', member_publication
+        %td= link_to 'Edit', edit_member_publication_path(member_publication)
+        %td= link_to 'Destroy', member_publication, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Member publication', new_member_publication_path

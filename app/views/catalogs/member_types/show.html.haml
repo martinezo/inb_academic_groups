@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name es:
+  = @catalogs_member_type.name_es
+%p
+  %b Name en:
+  = @catalogs_member_type.name_en
+
+= link_to 'Edit', edit_catalogs_member_type_path(@catalogs_member_type)
+\|
+= link_to 'Back', catalogs_member_types_path

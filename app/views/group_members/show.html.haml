@@ -1,0 +1,60 @@
+%p#notice= notice
+
+%p
+  %b Group:
+  = @group_member.group
+%p
+  %b Firstname:
+  = @group_member.firstname
+%p
+  %b Lastname:
+  = @group_member.lastname
+%p
+  %b Photo file name:
+  = @group_member.photo_file_name
+%p
+  %b Email:
+  = @group_member.email
+%p
+  %b Phone numbers:
+  = @group_member.phone_numbers
+%p
+  %b Academic career es:
+  = @group_member.academic_career_es
+%p
+  %b Academic career en:
+  = @group_member.academic_career_en
+%p
+  %b Research interest es:
+  = @group_member.research_interest_es
+%p
+  %b Research interests en:
+  = @group_member.research_interests_en
+%p
+  %b Photo res file name:
+  = @group_member.photo_res_file_name
+%p
+  %b Photo res descr es:
+  = @group_member.photo_res_descr_es
+%p
+  %b Photo res descr en:
+  = @group_member.photo_res_descr_en
+%p
+  %b Catalogs member type:
+  = @group_member.catalogs_member_type
+%p
+  %b Catalogs status:
+  = @group_member.catalogs_status
+%p
+  %b Current position es:
+  = @group_member.current_position_es
+%p
+  %b Current position en:
+  = @group_member.current_position_en
+%p
+  %b Current workplace:
+  = @group_member.current_workplace
+
+= link_to 'Edit', edit_group_member_path(@group_member)
+\|
+= link_to 'Back', group_members_path

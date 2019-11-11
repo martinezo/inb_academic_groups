@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name es:
+  = @group.name_es
+%p
+  %b Name en:
+  = @group.name_en
+%p
+  %b Catalogs location:
+  = @group.catalogs_location
+
+= link_to 'Edit', edit_group_path(@group)
+\|
+= link_to 'Back', groups_path

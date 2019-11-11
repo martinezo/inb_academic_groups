@@ -1,0 +1,23 @@
+%h1 Listing member_links
+
+%table
+  %thead
+    %tr
+      %th Group member
+      %th Link
+      %th
+      %th
+      %th
+
+  %tbody
+    - @member_links.each do |member_link|
+      %tr
+        %td= member_link.group_member
+        %td= member_link.link
+        %td= link_to 'Show', member_link
+        %td= link_to 'Edit', edit_member_link_path(member_link)
+        %td= link_to 'Destroy', member_link, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Member link', new_member_link_path

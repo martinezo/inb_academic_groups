@@ -1,0 +1,41 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  group: one
+  firstname: MyString
+  lastname: MyString
+  photo_file_name: MyString
+  email: MyString
+  phone_numbers: MyString
+  academic_career_es: MyText
+  academic_career_en: MyText
+  research_interest_es: MyText
+  research_interests_en: MyText
+  photo_res_file_name: MyString
+  photo_res_descr_es: MyString
+  photo_res_descr_en: MyString
+  catalogs_member_type: one
+  catalogs_status: one
+  current_position_es: MyString
+  current_position_en: MyString
+  current_workplace: MyString
+
+two:
+  group: two
+  firstname: MyString
+  lastname: MyString
+  photo_file_name: MyString
+  email: MyString
+  phone_numbers: MyString
+  academic_career_es: MyText
+  academic_career_en: MyText
+  research_interest_es: MyText
+  research_interests_en: MyText
+  photo_res_file_name: MyString
+  photo_res_descr_es: MyString
+  photo_res_descr_en: MyString
+  catalogs_member_type: two
+  catalogs_status: two
+  current_position_es: MyString
+  current_position_en: MyString
+  current_workplace: MyString

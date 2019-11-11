@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>ef64527c-5de5-4a4e-a16f-5c0a74d3e1ad.DATABASE:inb_academic_groups_development</OriginalElement>
+  <nodes>
+    <node x="590.5" y="926.0558312655087">ef64527c-5de5-4a4e-a16f-5c0a74d3e1ad.TABLE:inb_academic_groups_development.public.member_links</node>
+    <node x="-9.5" y="459.0">ef64527c-5de5-4a4e-a16f-5c0a74d3e1ad.TABLE:inb_academic_groups_development.public.catalogs_statuses</node>
+    <node x="550.5" y="207.5">ef64527c-5de5-4a4e-a16f-5c0a74d3e1ad.TABLE:inb_academic_groups_development.public.catalogs_pub_types</node>
+    <node x="829.0" y="447.5">ef64527c-5de5-4a4e-a16f-5c0a74d3e1ad.TABLE:inb_academic_groups_development.public.member_publications</node>
+    <node x="-9.5" y="-4.0">ef64527c-5de5-4a4e-a16f-5c0a74d3e1ad.TABLE:inb_academic_groups_development.public.catalogs_locations</node>
+    <node x="246.0" y="263.5">ef64527c-5de5-4a4e-a16f-5c0a74d3e1ad.TABLE:inb_academic_groups_development.public.group_members</node>
+    <node x="819.5" y="196.0">ef64527c-5de5-4a4e-a16f-5c0a74d3e1ad.TABLE:inb_academic_groups_development.public.publications</node>
+    <node x="261.0" y="1047.5">ef64527c-5de5-4a4e-a16f-5c0a74d3e1ad.TABLE:inb_academic_groups_development.public.catalogs_member_types</node>
+    <node x="264.0" y="-4.0">ef64527c-5de5-4a4e-a16f-5c0a74d3e1ad.TABLE:inb_academic_groups_development.public.groups</node>
+    <node x="590.5" y="676.0">ef64527c-5de5-4a4e-a16f-5c0a74d3e1ad.TABLE:inb_academic_groups_development.public.links</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="ef64527c-5de5-4a4e-a16f-5c0a74d3e1ad.TABLE:inb_academic_groups_development.public.groups" target="ef64527c-5de5-4a4e-a16f-5c0a74d3e1ad.TABLE:inb_academic_groups_development.public.catalogs_locations">
+      <point x="-96.0" y="-0.0" />
+      <point x="89.5" y="-0.0" />
+    </edge>
+    <edge source="ef64527c-5de5-4a4e-a16f-5c0a74d3e1ad.TABLE:inb_academic_groups_development.public.group_members" target="ef64527c-5de5-4a4e-a16f-5c0a74d3e1ad.TABLE:inb_academic_groups_development.public.catalogs_statuses">
+      <point x="-114.0" y="-0.0" />
+      <point x="89.5" y="-0.0" />
+    </edge>
+    <edge source="ef64527c-5de5-4a4e-a16f-5c0a74d3e1ad.TABLE:inb_academic_groups_development.public.member_publications" target="ef64527c-5de5-4a4e-a16f-5c0a74d3e1ad.TABLE:inb_academic_groups_development.public.group_members">
+      <point x="-91.0" y="-0.0" />
+      <point x="114.0" y="-0.0" />
+    </edge>
+    <edge source="ef64527c-5de5-4a4e-a16f-5c0a74d3e1ad.TABLE:inb_academic_groups_development.public.member_publications" target="ef64527c-5de5-4a4e-a16f-5c0a74d3e1ad.TABLE:inb_academic_groups_development.public.publications">
+      <point x="0.0" y="-72.5" />
+      <point x="0.0" y="84.0" />
+    </edge>
+    <edge source="ef64527c-5de5-4a4e-a16f-5c0a74d3e1ad.TABLE:inb_academic_groups_development.public.member_links" target="ef64527c-5de5-4a4e-a16f-5c0a74d3e1ad.TABLE:inb_academic_groups_development.public.links">
+      <point x="0.0" y="-72.5" />
+      <point x="0.0" y="84.0" />
+    </edge>
+    <edge source="ef64527c-5de5-4a4e-a16f-5c0a74d3e1ad.TABLE:inb_academic_groups_development.public.member_links" target="ef64527c-5de5-4a4e-a16f-5c0a74d3e1ad.TABLE:inb_academic_groups_development.public.group_members">
+      <point x="-89.5" y="-0.0" />
+      <point x="400.0" y="1000.0" />
+      <point x="40.0" y="256.5" />
+    </edge>
+    <edge source="ef64527c-5de5-4a4e-a16f-5c0a74d3e1ad.TABLE:inb_academic_groups_development.public.publications" target="ef64527c-5de5-4a4e-a16f-5c0a74d3e1ad.TABLE:inb_academic_groups_development.public.catalogs_pub_types">
+      <point x="-100.5" y="-0.0" />
+      <point x="89.5" y="-0.0" />
+    </edge>
+    <edge source="ef64527c-5de5-4a4e-a16f-5c0a74d3e1ad.TABLE:inb_academic_groups_development.public.group_members" target="ef64527c-5de5-4a4e-a16f-5c0a74d3e1ad.TABLE:inb_academic_groups_development.public.groups">
+      <point x="0.0" y="-256.5" />
+      <point x="0.0" y="84.0" />
+    </edge>
+    <edge source="ef64527c-5de5-4a4e-a16f-5c0a74d3e1ad.TABLE:inb_academic_groups_development.public.group_members" target="ef64527c-5de5-4a4e-a16f-5c0a74d3e1ad.TABLE:inb_academic_groups_development.public.catalogs_member_types">
+      <point x="0.0" y="256.5" />
+      <point x="0.0" y="-72.5" />
+    </edge>
+  </edges>
+  <settings layout="Directed Orthogonal" zoom="0.6924398625429553" x="624.7928039702233" y="641.7617866004963" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Key columns</Category>
+    <Category>Columns</Category>
+  </Categories>
+</Diagram>
+
