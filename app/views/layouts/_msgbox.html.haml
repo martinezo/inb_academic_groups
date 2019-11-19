@@ -1,0 +1,22 @@
+.modal-dialog.modal-md
+  .modal-content
+    .modal-header
+      = button_tag '', data: { dismiss: 'modal'}, class: 'close fa fa-close'
+      %h4.modal-title= title
+    .modal-body
+      .alert{class: alert || 'alert-info' }
+        = message
+      .text-right
+        - buttons.each do |btn|
+          = link_to_fa_button ({url: btn[:url] || '#' , icon: btn[:icon], text: btn[:text], html_class: btn[:html_class] || 'btn-default', remote: btn[:remote] || false})
+        = link_to_fa_button({text: cancel_btn_text || t('commands.cancel'), data: { dismiss: 'modal'}, icon: 'fa-close'})
+
+        -# ALERTS TYPES: http://getbootstrap.com/components/#alerts-examples
+        -# BUTTONS TYPES: http://getbootstrap.com/css/#buttons
+        -# Buttons ara an array of hashes [{text: '' , url: '', icon: '', class: ''},{} ... {}]
+        -# Use example:
+
+        -# :plain
+        -#    $('#delete-dialog').html("#{escape_javascript(render(partial: 'layouts/msgbox',
+        -#    locals: {title: 'Title', message: 'Question or message for the user', cancel_btn_text: 'Close',
+        -#    buttons: [{text: 'Yes', url: '#', icon: 'fa-check-square', remote: false},{text: 'No', url: '#', icon: 'fa-square'}]} ))}");

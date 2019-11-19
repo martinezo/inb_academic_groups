@@ -1,0 +1,151 @@
+$subordinate-color: #F2F2F2;
+$dominant-color: #A9BF5A;
+$accent-color: #2C4001;
+
+//BOOTSTRAP COLORS
+$muted-color: #777789;
+$important-color: #286090;
+$success-color: #449D44;
+$information-color: #31B0D5;
+$warning-color: #EC971F;
+$danger-color: #C9302C;
+
+//BOOTSTRAP
+.btn-primary{
+  background-color: $dominant-color;
+  border-color: darken($dominant-color,10%);
+
+  &:hover{
+    background-color: darken($dominant-color,30%);
+  }
+  &:active{
+    background-color: darken($dominant-color,20%);
+  }
+ }
+
+.btn-secondary{
+  background-color: lighten($muted-color,20%);
+  border-color: lighten($muted-color,10%);
+}
+
+.navbar-light{
+  background-color: $subordinate-color;
+  border: 1px solid darken($subordinate-color,10%) ;
+  border-radius: 5px;
+}
+
+//.form-group .btn:hover, a.btn:hover {
+  //background-color: darken($subordinate-color, 20%);
+//}
+
+//.form-group .btn, a.btn {
+  //background-color: darken($subordinate-color,5%);
+  //border: 1px solid darken($subordinate-color,10%);
+//}
+
+// Remove blue border shown in some browsers (ie. safari)
+a:focus#navbarDropdown{
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.navbar-brand{
+  color: $accent-color !important;
+  font-size: 1.5em;
+}
+
+
+.table-hover tbody tr:hover td {
+  background: lighten($dominant-color,30%);
+}
+
+.modal-header{
+  background: lighten($dominant-color,30%);
+}
+
+//.pagination > .active > span{
+//  background-color: $dominant-color;
+//  border-color: $dominant-color;
+//}
+//
+//.pagination > li > a, .pagination > li > span{
+//  color: $accent-color;
+//}
+//
+//.pagination > .active > span:hover{
+//  background-color: $accent-color;
+//  border-color: $accent-color;
+//}
+
+//END BOOTSTRAP
+
+//PAGINATE
+.page-link{
+ color: $accent-color;
+}
+
+.current{
+  background-color: $dominant-color;
+  font-weight: bold;
+  font-style: normal;
+}
+
+.gap{
+  padding-left: 1em;
+  padding-right: 1em;
+}
+//END PAGINATE
+
+#r-header{
+//  background-image: url('http://dummyimage.com/970x100/A9BF5A/2C4001&text=Agenda');
+  height: 100px;
+  border: 1 solid red;
+}
+
+#r-header{
+  margin-bottom: 1em;
+}
+
+.r-btn-search{
+
+}
+
+thead{
+  background-color: $dominant-color;
+}
+
+.sortable{
+  color: $accent-color;
+  &:hover{
+   text-decoration: none;
+    color: $subordinate-color;
+  }
+}
+
+.table{
+  .th{
+    width: 30%;
+    text-align: right;
+    font-weight: bold;
+    border-top: none;
+    border-bottom: 1px solid $subordinate-color;
+  }
+  .tc{
+    width: 70%;
+    text-align: left;
+    border-top: none;
+    border-bottom: 1px solid $subordinate-color;
+  }
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  /* Set the fixed height of the footer here */
+  height: 3em;
+  background-color: $subordinate-color;
+  padding-top: 1em;
+  font-size: 0.85em;
+  width: 100%;
+  z-index: 999;
+}

@@ -1,0 +1,36 @@
+%nav.navbar.navbar-default{:role => "navigation"}
+  .container-fluid
+    / Brand and toggle get grouped for better mobile display
+    .navbar-header
+      %button.navbar-toggle.collapsed{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand
+        %Strong= title
+    / Collect the nav links, forms, and other content for toggling
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      = form_tag url, remote: true, method: :get, class: 'navbar-form navbar-left' do
+        .form-group
+          =text_field_tag :search, '', placeholder: t('commands.search'), class: 'form-control'
+          =submit_tag t('commands.search'), class: 'btn btn-default'
+      .navbar-form.navbar-left
+        =link_to t('commands.show_all'), url, class: 'btn btn-default'
+      %ul.nav.navbar-nav.navbar-right
+        %li.dropdown
+          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+            = t('titles.menu')
+            %span.caret
+          %ul.dropdown-menu{:role => "menu"}
+            %li
+              %a{:href => "#"} Action
+            %li
+              %a{:href => "#"} Another action
+            %li
+              %a{:href => "#"} Something else here
+            %li.divider
+            %li
+              %a{:href => "#"}= t('commands.logout')
+    / /.navbar-collapse
+  / /.container-fluid

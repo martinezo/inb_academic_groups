@@ -29,6 +29,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'haml-rails'
 gem 'simple_form'
 gem 'bootstrap', '~> 4.3.1'
+gem 'font_awesome5_rails'
+gem 'will_paginate-bootstrap'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

@@ -1,0 +1,24 @@
+- es = 'activerecord.attributes.catalogs/department.'
+%table.table
+  %tbody
+    %tr
+      %td.th
+        = t("#{es}.abbr")
+      %td.tc
+        = @resource.abbr
+    %tr
+      %td.th
+        = t("#{es}.name_es")
+      %td.tc
+        = @resource.name_es
+    %tr
+      %td.th
+        = t("#{es}.name_en")
+      %td.tc
+        = @resource.name_en
+
+.modal-footer
+  = button_tag "<span class='fas fa-times'></span> #{t('commands.close')}".html_safe, data: { dismiss: "modal", type: 'button'}, class: 'button btn btn-secondary'
+  -#%button.btn{:type => "button"} #{t('commands.edit')}
+  = link_to_fa_button({url: eval("edit_#{hns}_path(@resource)"), icon: 'fa-pencil-alt', title: t('commands.edit'), text: t('commands.edit'), data: {dismiss: 'modal', toggle: 'modal', target: '#new-update-dialog'}, html_class: 'btn-primary'})
+/button btn mr-sm-2

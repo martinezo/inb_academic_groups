@@ -1,4 +1,4 @@
-body {
+ body {
   background-color: #fff;
   color: #333;
   margin: 33px;
@@ -22,14 +22,14 @@ pre {
 a {
   color: #000;
 
-  &:visited {
-    color: #666;
-  }
+  //&:visited {
+    //color: #666;
+  //}
 
-  &:hover {
-    color: #fff;
-    background-color: #000;
-  }
+  //&:hover {
+    //color: #fff;
+    //background-color: #000;
+  //}
 }
 
 th {

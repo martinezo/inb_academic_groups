@@ -1,0 +1,33 @@
+%nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  %span.navbar-brand.mb-0.h1
+    %Strong= title
+  %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
+    %span.navbar-toggler-icon
+  #navbarSupportedContent.collapse.navbar-collapse
+    %ul.navbar-nav.mr-auto
+
+      // Search form
+      %form.form-inline.my-2.my-lg-0
+        = form_tag index_url, remote: false, method: :get, class: 'input form-control mr-sm-2' do
+          .form-group
+            =text_field_tag :search, '', placeholder: t('commands.search'), class: 'form-control mr-sm-2'
+            =submit_tag t('commands.search'), class: 'button btn mr-sm-2 btn-secondary'
+
+      // Show all and new buttons
+      = link_to t('commands.show_all'), index_url, class: 'btn mr-sm-2 btn-secondary'
+      = new_link
+
+    // Dropdown menu
+    %ul.navbar-nav.ml-auto
+      %li.nav-item.dropdown
+        %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+          = t('titles.menu') + " (CurrentUser)"
+          -# = t('titles.menu') + " (#{current_devise_user.login})"
+        .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
+          = link_to t('titles.departments'), catalogs_locations_path, class: 'dropdown-item'
+          .dropdown-divider
+          = link_to t('titles.members_types'), catalogs_member_types_path, class: 'dropdown-item'
+          = link_to  t('titles.status'), catalogs_statuses_path, class: 'dropdown-item'
+          = link_to t('titles.Pub_types'), catalogs_pub_types_path, class: 'dropdown-item'
+          .dropdown-divider
+          -# = link_to  t('commands.logout'), destroy_devise_user_session_path, method: :delete

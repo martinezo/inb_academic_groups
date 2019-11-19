@@ -1,25 +1,23 @@
-%h1 Listing catalogs_locations
+// Table name singular, for url helpers
+- helper_name_s = @resources.table_name.singularize
+// Table name plural, for url helpers
+- helper_name_p = @resources.table_name
 
-%table
-  %thead
-    %tr
-      %th Abbr
-      %th Name es
-      %th Name en
-      %th
-      %th
-      %th
-
-  %tbody
-    - @catalogs_locations.each do |catalogs_location|
-      %tr
-        %td= catalogs_location.abbr
-        %td= catalogs_location.name_es
-        %td= catalogs_location.name_en
-        %td= link_to 'Show', catalogs_location
-        %td= link_to 'Edit', edit_catalogs_location_path(catalogs_location)
-        %td= link_to 'Destroy', catalogs_location, method: :delete, data: { confirm: 'Are you sure?' }
+- new_link = link_to_fa_button({url: eval("new_#{helper_name_s}_path"), text: t('commands.new'), html_class: 'btn-secondary', icon: 'fa-plus', data: {toggle: 'modal', target: '#new-update-dialog'}})
+= render partial: 'layouts/admin_menu', locals: {title: t(@resources.table_name), index_url: eval("#{helper_name_p}_path"), new_link: new_link}
 
 %br
 
-= link_to 'New Location', new_catalogs_location_path
+#records
+  = render partial: 'records', locals: {hnp: helper_name_p, hns: helper_name_s}
+#show-dialog.modal{:role => "dialog", :tabindex => "-1"}
+#new-update-dialog.modal{:role => "dialog", :tabindex => "-1"}
+#delete-dialog.modal{:role => "dialog", :tabindex => "-1"}
+
+-#%p.text-center= will_paginate @resources
+%nav{"aria-label" => "..."}
+  #paginate.pagination.justify-content-center.pagination-sm
+    = will_paginate @resources, :container => false
+%br
+
+= javascript_pack_tag 'paginate', 'data-turbolinks-track': 'reload'

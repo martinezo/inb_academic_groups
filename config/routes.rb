@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   end
   namespace :catalogs do
     resources :locations
+    get 'locations/delete/:id' => 'locations#delete', as: 'location_delete'
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

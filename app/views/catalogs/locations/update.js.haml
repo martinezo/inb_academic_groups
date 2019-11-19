@@ -1,0 +1,16 @@
+
+- if @resource.errors.count == 0
+  // Table name singular, for url helpers
+  - helper_name_s = @resources.table_name.singularize
+  // Table name plural, for url helpers
+  - helper_name_p = @resources.table_name
+
+  $('#records').empty();
+  $('#records').html("#{escape_javascript(render partial: 'records', locals: {hnp: helper_name_p, hns: helper_name_s})}");
+  $('#new-update-dialog .close').click();
+  $('#new-update-dialog').empty();
+  $('#show-dialog').html("#{escape_javascript(render(partial: 'show', layout: 'layouts/modal', locals: {title: t(helper_name_s), hns: helper_name_s} ))}");
+  $('#show-dialog').modal("toggle");
+- else
+  $('#new-update-dialog').empty();
+  $('#new-update-dialog').html("#{escape_javascript(render(partial: 'form', layout: 'layouts/modal', locals: {title: t(@resource.class.table_name.singularize)} ))}");
