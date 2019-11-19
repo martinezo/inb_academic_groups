@@ -1,5 +1,6 @@
 class Catalogs::Location < ApplicationRecord
   validates :abbr, :name_en, :name_es, presence: true
+  validates :abbr, length: { maximum: 10 }
 
   def self.search(search)
     if search

@@ -78,13 +78,11 @@ class Catalogs::LocationsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    #@todo change set_catalogs_locations to set_resource
     def set_catalogs_location
       @resource = Catalogs::Location.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    #@todo change catalogs_locations_params to resource_params
     def catalogs_location_params
       params.require(:catalogs_location).permit(:abbr, :name_es, :name_en)
     end

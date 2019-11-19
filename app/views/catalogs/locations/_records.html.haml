@@ -3,19 +3,18 @@
 
 %table.table.table-striped.table-hover
   %thead
-    %tr
-      %th{:scope => "col"}= sortable 'abbr', t("#{es}.abbr"), eval("#{hnp}_path")
-      %th{:scope => "col"}= sortable 'name_es', t("#{es}.name_es"),  eval("#{hnp}_path")
-      %th{:scope => "col"}
+    %tr.row.ml-0.mr-0
+      %th.col-2{:scope => "col"}= sortable 'abbr', t("#{es}.abbr"), eval("#{hnp}_path")
+      %th.col-8{:scope => "col"}= sortable 'name_es', t("#{es}.name_es"),  eval("#{hnp}_path")
+      %th.col-2{:scope => "col"}
   %tbody
     - @resources.each do |resource|
       -#if can? :update, resource
-      %tr
-        %td= resource.abbr
-        %td= resource.name_es
-        %td.text-center
+      %tr.row.ml-0.mr-0
+        %td.col-2= resource.abbr
+        %td.col-8.text-truncate= resource.name_es
+        %td.col-2.text-center
           = link_to_fa_button({url: resource, icon: 'fa-eye', title: t('commands.show'), data: {toggle: 'modal', target: '#show-dialog'}, html_class: 'btn-light'})
           = link_to_fa_button({url: eval("edit_#{hns}_path(resource)"), icon: 'fa-pencil-alt', title: t('commands.edit'), data: {toggle: 'modal', target: '#new-update-dialog'}, html_class: 'btn-light'})
           = link_to_fa_button({url: eval("#{hns}_delete_path(resource)"), icon: 'fa-trash-alt', title: t('commands.delete'), data: {toggle: 'modal', target: '#delete-dialog'}, html_class: 'btn-light'})
 
--#TODO Add bootstrap ellipsis (...) for long fields
