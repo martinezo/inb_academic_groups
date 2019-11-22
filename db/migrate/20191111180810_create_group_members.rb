@@ -9,7 +9,7 @@ class CreateGroupMembers < ActiveRecord::Migration[6.0]
       t.string :phone_numbers
       t.text :academic_career_es
       t.text :academic_career_en
-      t.text :research_interest_es
+      t.text :research_interests_es
       t.text :research_interests_en
       t.string :photo_res_file_name
       t.string :photo_res_descr_es

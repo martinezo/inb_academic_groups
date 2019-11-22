@@ -1,20 +1,25 @@
 class GroupsController < ApplicationController
-  before_action :set_group, only: [:show, :edit, :update, :destroy]
+  before_action :set_group, only: [:show, :edit, :update, :destroy, :delete]
+  helper_method :sort_column, :sort_direction
 
   # GET /groups
   # GET /groups.json
   def index
-    @groups = Group.all
+    @resources = Group.search(params[:search]).order("#{sort_column} #{sort_direction}").paginate(per_page: 11, page:  params[:page])
   end
 
   # GET /groups/1
   # GET /groups/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /groups/new
   def new
-    @group = Group.new
+    @resource = Group.new
   end
 
   # GET /groups/1/edit
@@ -24,16 +29,20 @@ class GroupsController < ApplicationController
   # POST /groups
   # POST /groups.json
   def create
-    @group = Group.new(group_params)
+    @resource = Group.new(group_params)
 
     respond_to do |format|
-      if @group.save
-        format.html { redirect_to @group, notice: 'Group was successfully created.' }
-        format.json { render :show, status: :created, location: @group }
+      if @resource.save
+        index
+
+        flash[:success] = t('notices.saved_successfully')
+        format.html { redirect_to @resource, notice: 'Group was successfully created.' }
+        format.json { render :show, status: :created, location: @resource }
       else
         format.html { render :new }
-        format.json { render json: @group.errors, status: :unprocessable_entity }
+        format.json { render json: @resource.errors, status: :unprocessable_entity }
       end
+      format.js
     end
   end
 
@@ -41,34 +50,47 @@ class GroupsController < ApplicationController
   # PATCH/PUT /groups/1.json
   def update
     respond_to do |format|
-      if @group.update(group_params)
-        format.html { redirect_to @group, notice: 'Group was successfully updated.' }
-        format.json { render :show, status: :ok, location: @group }
+      if @resource.update(group_params)
+        # Load records in order to refresh index page
+        index
+        flash[:success] = t('notices.updated_successfully')
+        format.html { redirect_to @resource, warning: 'Group was successfully updated.'}
+        format.json { render :show, status: :ok, location: @resource }
       else
         format.html { render :edit }
-        format.json { render json: @group.errors, status: :unprocessable_entity }
+        format.json { render json: @resource.errors, status: :unprocessable_entity }
       end
+      format.js
     end
   end
 
   # DELETE /groups/1
   # DELETE /groups/1.json
   def destroy
-    @group.destroy
+    @resource.destroy
     respond_to do |format|
-      format.html { redirect_to groups_url, notice: 'Group was successfully destroyed.' }
+      format.html { redirect_to groups_url, flash: {warning: t('notices.destroyed') }}
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_group
-      @group = Group.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def group_params
-      params.require(:group).permit(:name_es, :name_en, :catalogs_location_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_group
+    @resource = Group.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def group_params
+    params.require(:group).permit(:name_es, :name_en, :catalogs_location_id)
+  end
+
+  def sort_column
+    params[:sort] || 'name_es'
+  end
+
+  def sort_direction
+    params[:direction] || 'asc'
+  end
 end

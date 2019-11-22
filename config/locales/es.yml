@@ -30,11 +30,19 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 es:
+  titles:
+    attributes: Atributos
+
   #Table names
   catalogs_locations: "Ubicaciones"
   catalogs_location: "Ubicación"
   catalogs_member_types: "Tipos de miembro"
+  catalogs_member_type: "Tipo de miembro"
   group_members: "Integrantes de grupos"
+  catalogs_pub_types: "Tipos de publicaciones"
+  catalogs_pub_tipe: "Tipo de publicación"
+  groups: Grupos
+  group: Grupo
 
   commands:
     submit: Enviar
@@ -83,6 +91,31 @@ es:
         abbr: Abreviatura
         name_es: Nombre
         name_en: Nombre (inglés)
+      catalogs/pub_type:
+        name_es: Nombre
+        name_en: Nombre (inglés)
+      catalogs/member_type:
+        name_es: Nombre
+        name_en: Nombre (inglés)
+      group_member:
+        firstname: Nombre
+        lastname: Apellidos
+        photo_file_name: Fotorafía
+        email: Correo
+        phone_numbers: Teléfono(s)
+        academic_career_es: Trayectoria académica
+        academic_career_en: Trayectoria académica (inglés)
+        research_interests_es: Intereses actuales de investigación
+        research_interests_en: Intereses actuales de investigación (inglés)
+        photo_res_file_name: Fotografía de investigación
+        photo_res_descr_es: Descipción de fotografía de investigación
+        photo_res_descr_en: Descipción de fotografía de investigación (inglés)
+        links: Links
+        publications: Publicaciones
+      group:
+        name_es: Nombre
+        name_en: Nombre (ingés)
+        location: Ubicación
 
     errors:
       models:

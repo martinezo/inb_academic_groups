@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2019_11_11_181043) do
   create_table "catalogs_member_types", force: :cascade do |t|
     t.string "name_es"
     t.string "name_en"
+    t.string "gm_attrs", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -52,7 +53,7 @@ ActiveRecord::Schema.define(version: 2019_11_11_181043) do
     t.string "phone_numbers"
     t.text "academic_career_es"
     t.text "academic_career_en"
-    t.text "research_interest_es"
+    t.text "research_interests_es"
     t.text "research_interests_en"
     t.string "photo_res_file_name"
     t.string "photo_res_descr_es"

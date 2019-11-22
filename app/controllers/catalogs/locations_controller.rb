@@ -38,12 +38,11 @@ class Catalogs::LocationsController < ApplicationController
         flash[:success] = t('notices.saved_successfully')
         format.html { redirect_to @resource, notice: 'Location was successfully created.' }
         format.json { render :show, status: :created, location: @resource }
-        format.js
       else
         format.html { render :new }
         format.json { render json: @resource.errors, status: :unprocessable_entity }
-        format.js
       end
+      format.js
     end
   end
 

@@ -149,3 +149,8 @@ footer {
   width: 100%;
   z-index: 999;
 }
+
+// SIMPLE FORM
+.sf-checkbox label:first-child{
+  display: none;
+}

@@ -5,14 +5,17 @@ Rails.application.routes.draw do
   resources :links
   resources :publications
   resources :groups
+  get 'groups/delete/:id' => 'groups#delete', as: 'group_delete'
   namespace :catalogs do
     resources :pub_types
+    get 'pub_types/delete/:id' => 'pub_types#delete', as: 'pub_type_delete'
   end
   namespace :catalogs do
     resources :statuses
   end
   namespace :catalogs do
     resources :member_types
+    get 'member_types/delete/:id' => 'member_types#delete', as: 'member_type_delete'
   end
   namespace :catalogs do
     resources :locations

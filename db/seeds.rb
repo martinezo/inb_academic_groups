@@ -9,7 +9,8 @@
 #
 
 # MEMBER TYPES
-Catalogs::MemberType.create(name_es: 'Líder de grupo', name_en: 'Group leader')
+Catalogs::MemberType.create(name_es: 'Líder de grupo', name_en: 'Group leader',
+                            gm_attrs: 'academic_career_es,academic_career_en,research_interest_es,research_interests_en,photo_res_file_name,photo_res_descr_es,photo_res_descr_en,links,publications')
 Catalogs::MemberType.create(name_es: 'Investigador adjunto', name_en: 'Deputy researcher')
 Catalogs::MemberType.create(name_es: 'Insvestigador asociado', name_en: 'Associate researcher')
 Catalogs::MemberType.create(name_es: 'Catedrático CONACYT', name_en: 'CONACYT Professor')
@@ -47,3 +48,4 @@ Catalogs::Status.create(name: 'Inactive')
 # PUBLICATION TYPES
 Catalogs::PubType.create(name_es: 'Artículo', name_en: 'Article')
 Catalogs::PubType.create(name_es: 'Libro', name_en: 'Book')
+

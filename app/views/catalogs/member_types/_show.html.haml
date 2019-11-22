@@ -1,11 +1,6 @@
-- es = 'activerecord.attributes.catalogs/location'
+- es = 'activerecord.attributes.catalogs/pub_type'
 %table.table
   %tbody
-    %tr
-      %td.th
-        = t("#{es}.abbr")
-      %td.tc
-        = @resource.abbr
     %tr
       %td.th
         = t("#{es}.name_es")
@@ -16,6 +11,23 @@
         = t("#{es}.name_en")
       %td.tc
         = @resource.name_en
+%br
+%h6.ml-5= t("titles.attributes")
+%hr
+%table.table
+  %tbody
+    - @member_attrs.each do |attr|
+      %tr
+        -if @resource.attrs_include? attr
+          %td.th
+            %i.far.fa-check-square
+          %td.tc
+            = t("activerecord.attributes.group_member.#{attr}")
+        -else
+          %td.th
+            %i.far.fa-square
+          %td.tc
+            = t("activerecord.attributes.group_member.#{attr}")
 
 .modal-footer
   = button_tag "<span class='fas fa-times'></span> #{t('commands.close')}".html_safe, data: { dismiss: "modal", type: 'button'}, class: 'button btn btn-secondary'

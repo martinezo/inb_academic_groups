@@ -1,38 +1,46 @@
 class Catalogs::PubTypesController < ApplicationController
-  before_action :set_catalogs_pub_type, only: [:show, :edit, :update, :destroy]
+  before_action :set_catalogs_pub_type, only: [:show, :edit, :update, :destroy, :delete]
+  helper_method :sort_column, :sort_direction
 
   # GET /catalogs/pub_types
   # GET /catalogs/pub_types.json
   def index
-    @catalogs_pub_types = Catalogs::PubType.all
+    @resources = Catalogs::PubType.search(params[:search]).order("#{sort_column} #{sort_direction}").paginate(per_page: 11, page:  params[:page])
   end
 
   # GET /catalogs/pub_types/1
   # GET /catalogs/pub_types/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /catalogs/pub_types/new
   def new
-    @catalogs_pub_type = Catalogs::PubType.new
+    @resource = Catalogs::PubType.new
   end
 
   # GET /catalogs/pub_types/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /catalogs/pub_types
   # POST /catalogs/pub_types.json
   def create
-    @catalogs_pub_type = Catalogs::PubType.new(catalogs_pub_type_params)
+    @resource = Catalogs::PubType.new(catalogs_pub_type_params)
 
     respond_to do |format|
-      if @catalogs_pub_type.save
-        format.html { redirect_to @catalogs_pub_type, notice: 'Pub type was successfully created.' }
-        format.json { render :show, status: :created, location: @catalogs_pub_type }
+      if @resource.save
+        index
+        flash[:success] = t('notices.saved_successfully')
+        format.html { redirect_to @resource, notice: 'Pub type was successfully created.' }
+        format.json { render :show, status: :created, location: @resource }
+        format.js
       else
         format.html { render :new }
-        format.json { render json: @catalogs_pub_type.errors, status: :unprocessable_entity }
+        format.json { render json: @resource.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -41,12 +49,16 @@ class Catalogs::PubTypesController < ApplicationController
   # PATCH/PUT /catalogs/pub_types/1.json
   def update
     respond_to do |format|
-      if @catalogs_pub_type.update(catalogs_pub_type_params)
-        format.html { redirect_to @catalogs_pub_type, notice: 'Pub type was successfully updated.' }
-        format.json { render :show, status: :ok, location: @catalogs_pub_type }
+      if @resource.update(catalogs_pub_type_params)
+        index
+        flash[:success] = t('notices.updated_successfully')
+        format.html { redirect_to @resource, notice: 'Pub type was successfully updated.' }
+        format.json { render :show, status: :ok, location: @resource }
+        format.js
       else
         format.html { render :edit }
-        format.json { render json: @catalogs_pub_type.errors, status: :unprocessable_entity }
+        format.json { render json: @resource.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -54,21 +66,30 @@ class Catalogs::PubTypesController < ApplicationController
   # DELETE /catalogs/pub_types/1
   # DELETE /catalogs/pub_types/1.json
   def destroy
-    @catalogs_pub_type.destroy
+    @resource.destroy
     respond_to do |format|
-      format.html { redirect_to catalogs_pub_types_url, notice: 'Pub type was successfully destroyed.' }
+      format.html { redirect_to catalogs_pub_types_url, flash: {warning: t('notices.destroyed') }}
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_catalogs_pub_type
-      @catalogs_pub_type = Catalogs::PubType.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def catalogs_pub_type_params
-      params.require(:catalogs_pub_type).permit(:name_es, :name_en)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_catalogs_pub_type
+    @resource = Catalogs::PubType.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def catalogs_pub_type_params
+    params.require(:catalogs_pub_type).permit(:name_es, :name_en)
+  end
+
+  def sort_column
+    params[:sort] || 'name_es'
+  end
+
+  def sort_direction
+    params[:direction] || 'asc'
+  end
 end
