@@ -1,4 +1,4 @@
-- es = 'activerecord.attributes.group'
+- es = 'activerecord.attributes.catalogs/department'
 %table.table
   %tbody
     %tr
@@ -11,17 +11,6 @@
         = t("#{es}.name_en")
       %td.tc
         = @resource.name_en
-    %tr
-      %td.th
-        = t("#{es}.catalogs_department")
-      %td.tc
-        = @resource.catalogs_department.name_es
-    %tr
-      %td.th
-        = t("#{es}.catalogs_location")
-      %td.tc
-        = @resource.catalogs_location.name_es
-
 
 .modal-footer
   = button_tag "<span class='fas fa-times'></span> #{t('commands.close')}".html_safe, data: { dismiss: "modal", type: 'button'}, class: 'button btn btn-secondary'

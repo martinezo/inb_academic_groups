@@ -43,6 +43,9 @@ es:
   catalogs_pub_tipe: "Tipo de publicación"
   groups: Grupos
   group: Grupo
+  catalogs_departments: Departamentos
+  catalogs_department: Departamento
+
 
   commands:
     submit: Enviar
@@ -94,6 +97,9 @@ es:
       catalogs/pub_type:
         name_es: Nombre
         name_en: Nombre (inglés)
+      catalogs/department:
+        name_es: Nombre
+        name_en: Nombre (inglés)
       catalogs/member_type:
         name_es: Nombre
         name_en: Nombre (inglés)
@@ -115,7 +121,8 @@ es:
       group:
         name_es: Nombre
         name_en: Nombre (ingés)
-        location: Ubicación
+        catalogs_location: Ubicación
+        catalogs_department: Departamento
 
     errors:
       models:

@@ -83,7 +83,7 @@ class GroupsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def group_params
-    params.require(:group).permit(:name_es, :name_en, :catalogs_location_id)
+    params.require(:group).permit(:name_es, :name_en, :catalogs_location_id, :catalogs_department_id)
   end
 
   def sort_column

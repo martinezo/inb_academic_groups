@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_11_181043) do
+ActiveRecord::Schema.define(version: 2019_11_23_002951) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "catalogs_departments", force: :cascade do |t|
+    t.string "name_es"
+    t.string "name_en"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "catalogs_locations", force: :cascade do |t|
     t.string "abbr"
@@ -76,6 +83,8 @@ ActiveRecord::Schema.define(version: 2019_11_11_181043) do
     t.bigint "catalogs_location_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "catalogs_department_id", default: 1, null: false
+    t.index ["catalogs_department_id"], name: "index_groups_on_catalogs_department_id"
     t.index ["catalogs_location_id"], name: "index_groups_on_catalogs_location_id"
   end
 
@@ -117,6 +126,7 @@ ActiveRecord::Schema.define(version: 2019_11_11_181043) do
   add_foreign_key "group_members", "catalogs_member_types"
   add_foreign_key "group_members", "catalogs_statuses"
   add_foreign_key "group_members", "groups"
+  add_foreign_key "groups", "catalogs_departments"
   add_foreign_key "groups", "catalogs_locations"
   add_foreign_key "member_links", "group_members"
   add_foreign_key "member_links", "links"

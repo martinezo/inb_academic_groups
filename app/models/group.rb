@@ -1,5 +1,6 @@
 class Group < ApplicationRecord
-  validates :name_en, :name_es, :catalogs_location_id, presence: true
+  validates :name_en, :name_es, :catalogs_location_id, :catalogs_department_id, presence: true
+  belongs_to :catalogs_department, :class_name => 'Catalogs::Department'
   belongs_to :catalogs_location, :class_name => 'Catalogs::Location'
   has_many :group_members
 

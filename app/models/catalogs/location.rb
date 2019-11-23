@@ -1,4 +1,5 @@
 class Catalogs::Location < ApplicationRecord
+  has_many :groups
   validates :abbr, :name_en, :name_es, presence: true
   validates :abbr, length: { maximum: 10 }
 
