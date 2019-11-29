@@ -8,6 +8,10 @@ class GroupsController < ApplicationController
     @resources = Group.search(params[:search]).order("#{sort_column} #{sort_direction}").paginate(per_page: 11, page:  params[:page])
   end
 
+  def by_department
+    @resources = Group.from_department(params[:department_id]).search(params[:search]).order("#{sort_column} #{sort_direction}").paginate(per_page: 11, page:  params[:page])
+  end
+
   # GET /groups/1
   # GET /groups/1.json
   def show
@@ -23,8 +27,7 @@ class GroupsController < ApplicationController
   end
 
   # GET /groups/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /groups
   # POST /groups.json

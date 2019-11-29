@@ -1,4 +1,4 @@
-- es = 'activerecord.attributes.catalogs/pub_type'
+- es = 'activerecord.attributes.catalogs/member_type'
 %table.table
   %tbody
     %tr
@@ -11,12 +11,17 @@
         = t("#{es}.name_en")
       %td.tc
         = @resource.name_en
+    %tr
+      %td.th
+        = t("#{es}.rank")
+      %td.tc
+        = @resource.rank
 %br
 %h6.ml-5= t("titles.attributes")
 %hr
 %table.table
   %tbody
-    - @member_attrs.each do |attr|
+    - @gm_attrs.each do |attr|
       %tr
         -if @resource.attrs_include? attr
           %td.th

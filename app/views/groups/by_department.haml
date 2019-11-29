@@ -3,10 +3,11 @@
 // Table name plural, for url helpers
 - helper_name_p = @resources.table_name
 
-- new_link = link_to_fa_button({url: eval("new_#{helper_name_s}_path"), text: t('commands.new'), html_class: 'btn-secondary', icon: 'fa-plus', data: {toggle: 'modal', target: '#new-update-dialog'}})
-= render partial: 'layouts/admin_menu', locals: {title: t(@resources.table_name), index_url: eval("#{helper_name_p}_path"), new_link: new_link}
+- new_link = link_to_fa_button({url: new_group_path(department_id: params[:department_id]), text: t('commands.new'), html_class: 'btn-secondary', icon: 'fa-plus', data: {toggle: 'modal', target: '#new-update-dialog'}})
+= render partial: 'layouts/admin_menu', locals: {title: t(@resources.table_name), index_url: by_department_url(params[:department_id]), new_link: new_link}
 
-%br
+%p.text-center.alert.alert-secondary.mt-2.mb-1.h5
+  =Catalogs::Department.find(params[:department_id]).name_es
 
 #records
   = render partial: 'records', locals: {hnp: helper_name_p, hns: helper_name_s}

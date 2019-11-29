@@ -1,0 +1,26 @@
+- es = "activerecord.attributes.group_member"
+= flash_messages(flash)
+
+%table.table.table-striped.table-hover
+  %thead
+    %tr.row.ml-0.mr-0
+      %th.col-2{:scope => "col"}= sortable 'lastname', t("#{es}.lastname"),  eval("#{hnp}_path")
+      %th.col-3{:scope => "col"}= sortable 'firstname', t("#{es}.firstname"),  eval("#{hnp}_path")
+      %th.col-3{:scope => "col"}= sortable 'group_id', t("#{es}.group"),  eval("#{hnp}_path")
+      %th.col-4{:scope => "col"}
+  %tbody
+    - @resources.each do |resource|
+      -#if can? :update, resource
+      %tr.row.ml-0.mr-0
+        %td.col-2.text-truncate= resource.lastname
+        %td.col-3.text-truncate= resource.firstname
+        %td.col-3.text-truncate= resource.group.name_es
+        %td.col-4.text-center
+          = link_to_fa_button({url: resource, icon: 'fa-eye', title: t('commands.show'),  html_class: 'btn-light', remote: false})
+          = link_to_fa_button({url: edit_group_member_path(resource), icon: 'fa-pencil-alt', title: t('commands.edit'), html_class: 'btn-light', remote: false})
+          = link_to_fa_button({url: group_member_delete_path(resource), icon: 'fa-trash-alt', title: t('commands.delete'), data: {toggle: 'modal', target: '#delete-dialog'}, html_class: 'btn-light'})
+          -if resource.catalogs_status_id == 1
+            = link_to_fa_button({url: group_member_switch_status_path(resource), remote: false, icon: 'fa-user-plus', title: t('commands.status_active'), html_class: 'btn-light'})
+          -else
+            = link_to_fa_button({url: group_member_switch_status_path(resource), remote: false, icon: 'fa-user-minus', title: t('commands.status_active'), html_class: 'btn-light'})
+

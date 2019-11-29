@@ -1,5 +1,8 @@
-%h1 New group_member
-
+%p.modal-header.text-center.alert.mt-2.mb-3.h5
+  = t('group_member')
 = render 'form'
+%br
 
-= link_to 'Back', group_members_path
+= javascript_pack_tag 'mt_setup_fields', 'data-turbolinks-track': 'reload'
+
+

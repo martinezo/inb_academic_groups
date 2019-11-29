@@ -1,60 +1,61 @@
-%p#notice= notice
+- es = 'activerecord.attributes.group_member'
+%p.modal-header.text-center.alert.mt-2.mb-3.h5
+  = t('group_member')
 
-%p
-  %b Group:
-  = @group_member.group
-%p
-  %b Firstname:
-  = @group_member.firstname
-%p
-  %b Lastname:
-  = @group_member.lastname
-%p
-  %b Photo file name:
-  = @group_member.photo_file_name
-%p
-  %b Email:
-  = @group_member.email
-%p
-  %b Phone numbers:
-  = @group_member.phone_numbers
-%p
-  %b Academic career es:
-  = @group_member.academic_career_es
-%p
-  %b Academic career en:
-  = @group_member.academic_career_en
-%p
-  %b Research interest es:
-  = @group_member.research_interest_es
-%p
-  %b Research interests en:
-  = @group_member.research_interests_en
-%p
-  %b Photo res file name:
-  = @group_member.photo_res_file_name
-%p
-  %b Photo res descr es:
-  = @group_member.photo_res_descr_es
-%p
-  %b Photo res descr en:
-  = @group_member.photo_res_descr_en
-%p
-  %b Catalogs member type:
-  = @group_member.catalogs_member_type
-%p
-  %b Catalogs status:
-  = @group_member.catalogs_status
-%p
-  %b Current position es:
-  = @group_member.current_position_es
-%p
-  %b Current position en:
-  = @group_member.current_position_en
-%p
-  %b Current workplace:
-  = @group_member.current_workplace
+= flash_messages(flash)
 
-= link_to 'Edit', edit_group_member_path(@group_member)
-\|
-= link_to 'Back', group_members_path
+.text-right
+  = link_to "<span class='fas fa-times'></span> #{t('commands.close')}".html_safe, group_members_path, class: "button btn btn-secondary"
+  = link_to_fa_button({url: edit_group_member_path(@resource), remote: false, icon: 'fa-pencil-alt', title: t('commands.edit'), text: t('commands.edit'),  html_class: 'btn-primary'})
+%hr
+
+.row
+  %strong.col-2.text-right= t("#{es}.group")
+  .col-4= @resource.group.name_es
+  %strong.col-2.text-right= t("#{es}.catalogs_member_type")
+  .col-4= @resource.catalogs_member_type.name_es
+%hr
+
+.row
+  %strong.col-2.text-right= t("#{es}.name")
+  .col-10= @resource.name
+%hr
+
+.row
+  %strong.col-2.text-right= t("#{es}.email")
+  .col-4= @resource.email
+  %strong.col-2.text-right= t("#{es}.phone_numbers")
+  .col-4= @resource.phone_numbers
+%hr
+
+- @resource.catalogs_member_type.gm_attrs_arr.each do |gm_attr|
+  -if @resource.type_for_attribute(gm_attr).is_a? ActiveRecord::Type::Text
+    .row
+      %strong.col-5= t("#{es}.#{gm_attr}")
+      %hr
+      .row
+        .col-12= eval("@resource.#{gm_attr}")
+  -else
+    .row
+      %strong.col-2.text-right= t("#{es}.#{gm_attr}")
+      .col-10= eval("@resource.#{gm_attr}")
+  %hr
+
+.row
+  %strong.col-2.text-right= t("#{es}.current_workplace")
+  .col-10= @resource.current_workplace
+%hr
+
+.row
+  %strong.col-2.text-right= t("#{es}.current_position_es")
+  .col-10= @resource.current_position_es
+%hr
+
+.row
+  %strong.col-2.text-right= t("#{es}.current_position_en")
+  .col-10= @resource.current_position_en
+%hr
+
+.text-right
+  = link_to "<span class='fas fa-times'></span> #{t('commands.close')}".html_safe, group_members_path, class: "button btn btn-secondary"
+  = link_to_fa_button({url: edit_group_member_path(@resource), remote: false, icon: 'fa-pencil-alt', title: t('commands.edit'), text: t('commands.edit'),  html_class: 'btn-primary'})

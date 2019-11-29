@@ -1,27 +1,41 @@
 -# frozen_string_literal: true
-= simple_form_for(@group_member) do |f|
+= simple_form_for @resource, remote: false do |f|
+
+  .text-right
+    = link_to "<span class='fas fa-times'></span> #{t('commands.close')}".html_safe, group_members_path, class: "button btn btn-secondary"
+    = f.button :submit, t('commands.save'), class: "btn-primary"
+  %hr
+
   = f.error_notification
-  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+  .row
+    .col-2= f.label t('activerecord.attributes.group_member.group_and_member_type')
+    .col-5= f.association :group, label_method: :name_es, prompt: t('messages.choose_group'), label: false
+    .col-5= f.association :catalogs_member_type, collection: Catalogs::MemberType.order('rank'), label_method: :name_es, prompt: t('messages.choose_member_type'), label: false
+  .row
+    .col-2= f.label :firstname
+    .col-3= f.input :firstname, label: false
+    .col-2.text-right= f.label :lastname
+    .col-5= f.input :lastname, label: false
+  .row
+    .col-2= f.label :email
+    .col-3= f.input :email, label: false, as: :email
+    .col-2.text-right= f.label :phone_numbers
+    .col-5= f.input :phone_numbers, label: false
+  = f.input :academic_career_es, :input_html => {:rows => 10}
+  = f.input :academic_career_en, :input_html => {:rows => 10}
+  = f.input :research_interests_es, :input_html => {:rows => 10}
+  = f.input :research_interests_en, :input_html => {:rows => 10}
+  .row
+    .col-2= f.label t('activerecord.attributes.group_member.current_workplace')
+    .col-10= f.input :current_workplace, label: false
+  .row
+    .col-2= f.label t('activerecord.attributes.group_member.current_position_es')
+    .col-10= f.input :current_position_es, label: false
+  .row
+    .col-2= f.label t('activerecord.attributes.group_member.current_position_en')
+    .col-10= f.input :current_position_en, label: false
 
-  .form-inputs
-    = f.association :group, label_method: :name_es
-    = f.input :firstname
-    = f.input :lastname
-    = f.input :photo_file_name
-    = f.input :email
-    = f.input :phone_numbers
-    = f.input :academic_career_es
-    = f.input :academic_career_en
-    = f.input :research_interest_es
-    = f.input :research_interests_en
-    = f.input :photo_res_file_name
-    = f.input :photo_res_descr_es
-    = f.input :photo_res_descr_en
-    = f.association :catalogs_member_type, label_method: :name_es
-    = f.association :catalogs_status
-    = f.input :current_position_es
-    = f.input :current_position_en
-    = f.input :current_workplace
-
-  .form-actions
-    = f.button :submit
+  %hr
+  .text-right
+    = link_to "<span class='fas fa-times'></span> #{t('commands.close')}".html_safe, group_members_path, class: "button btn btn-secondary"
+    = f.button :submit, t('commands.save'), class: "btn-primary"

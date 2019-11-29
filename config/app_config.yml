@@ -1,0 +1,22 @@
+gm_custom_attrs:
+  - academic_career_es
+  - academic_career_en
+  - research_interests_es
+  - research_interests_en
+  - photo_res_file_name
+  - photo_res_descr_es
+  - photo_res_descr_en
+  - links
+  - publications
+
+gm_default_attrs:
+  - firstname
+  - lastname
+  - photo_file_name
+  - email
+  - phone_numbers
+  - catalogs_member_type
+  - group
+  - current_workplace
+  - current_position_es
+  - current_position_en

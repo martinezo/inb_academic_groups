@@ -5,10 +5,11 @@
 
   = f.input :name_es
   = f.input :name_en
+  = f.input :rank, input_html: { min: 1 }
 
   = t("titles.attributes")
   %hr
-  - @member_attrs.each do |attr|
+  - @gm_attrs.each do |attr|
     -if @resource.attrs_include? attr
       = f.input "attr_#{attr}", :as => :boolean, label: t("activerecord.attributes.group_member.#{attr}"), wrapper_html: { class: 'sf-checkbox pl-5' }, input_html: { :checked => "checked"}
     -else

@@ -1,0 +1,11 @@
+:plain
+  $.each($("div[class*='group_member_']"), function(i, field){
+    field_c = $.grep( $(field).attr('class').split(' '), function( n, i ) {return n.startsWith("group_member_");})[0];
+    var gm_attrs = eval("#{escape_javascript(@gm_attrs.to_s).html_safe}")
+    if($.inArray(field_c, gm_attrs) >= 0 ){
+      $(field).show();
+    } else {
+      $(field).hide();
+    }
+  });
+

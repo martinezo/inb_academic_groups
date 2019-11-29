@@ -3,10 +3,14 @@ Rails.application.routes.draw do
   resources :member_links
   resources :member_publications
   resources :group_members
+  get 'group_members/delete/:id' => 'group_members#delete', as: 'group_member_delete'
+  get 'group_members/fields_setup/:id' => 'group_members#fields_setup', as: 'fields_setup'
+  get 'group_members/switch_status/:id' => 'group_members#switch_status', as: 'group_member_switch_status'
   resources :links
   resources :publications
   resources :groups
   get 'groups/delete/:id' => 'groups#delete', as: 'group_delete'
+  get 'groups/by_department/:department_id' => 'groups#by_department', as: 'by_department'
   namespace :catalogs do
     resources :pub_types
     get 'pub_types/delete/:id' => 'pub_types#delete', as: 'pub_type_delete'

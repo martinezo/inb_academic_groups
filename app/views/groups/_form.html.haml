@@ -6,7 +6,11 @@
 
   = f.input :name_es
   = f.input :name_en
-  = f.association :catalogs_department, label_method: :name_es
+  - if(params[:department_id])
+    = f.association :catalogs_department, label_method: :name_es, disabled: true, selected: params[:department_id]
+  - else
+    = f.association :catalogs_department, label_method: :name_es
+
   = f.association :catalogs_location, label_method: :name_es
   .modal-footer
     .text-right

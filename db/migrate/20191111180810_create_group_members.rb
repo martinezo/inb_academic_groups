@@ -15,7 +15,7 @@ class CreateGroupMembers < ActiveRecord::Migration[6.0]
       t.string :photo_res_descr_es
       t.string :photo_res_descr_en
       t.references :catalogs_member_type, null: false, foreign_key: true
-      t.references :catalogs_status, null: false, foreign_key: true
+      t.references :catalogs_status, null: false, foreign_key: true, default: 1
       t.string :current_position_es
       t.string :current_position_en
       t.string :current_workplace

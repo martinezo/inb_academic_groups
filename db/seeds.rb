@@ -9,14 +9,14 @@
 #
 
 # MEMBER TYPES
-Catalogs::MemberType.create(name_es: 'Líder de grupo', name_en: 'Group leader',
+Catalogs::MemberType.create(name_es: 'Líder de grupo', name_en: 'Group leader', rank: 1,
                             gm_attrs: 'academic_career_es,academic_career_en,research_interest_es,research_interests_en,photo_res_file_name,photo_res_descr_es,photo_res_descr_en,links,publications')
-Catalogs::MemberType.create(name_es: 'Investigador adjunto', name_en: 'Deputy researcher')
-Catalogs::MemberType.create(name_es: 'Insvestigador asociado', name_en: 'Associate researcher')
-Catalogs::MemberType.create(name_es: 'Catedrático CONACYT', name_en: 'CONACYT Professor')
-Catalogs::MemberType.create(name_es: 'Insvestigador postdoctoral', name_en: 'Postdoctoral researcher')
-Catalogs::MemberType.create(name_es: 'Técnico académico', name_en: 'Academic technician')
-Catalogs::MemberType.create(name_es: 'Estudiante', name_en: 'Student')
+Catalogs::MemberType.create(name_es: 'Investigador adjunto', name_en: 'Deputy researcher', rank: 2)
+Catalogs::MemberType.create(name_es: 'Insvestigador asociado', name_en: 'Associate researcher', rank: 3)
+Catalogs::MemberType.create(name_es: 'Catedrático CONACYT', name_en: 'CONACYT Professor', rank: 4)
+Catalogs::MemberType.create(name_es: 'Insvestigador postdoctoral', name_en: 'Postdoctoral researcher', rank: 5)
+Catalogs::MemberType.create(name_es: 'Técnico académico', name_en: 'Academic technician', rank: 6)
+Catalogs::MemberType.create(name_es: 'Estudiante', name_en: 'Student', rank: 7)
 
 # LOCATIONS
 Catalogs::Location.create(abbr: 'Lab. A-01',

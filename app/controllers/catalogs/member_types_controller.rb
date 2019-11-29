@@ -1,6 +1,8 @@
 class Catalogs::MemberTypesController < ApplicationController
-  before_action :set_catalogs_member_type, only: [:show, :edit, :update, :destroy, :delete]
-  before_action :set_group_member_attrs, only: [:edit, :new, :show ]
+  require 'yaml'
+
+  before_action :set_catalogs_member_type, only: %i[show edit update destroy delete]
+  before_action :set_group_member_attrs, only: %i[edit new show update create]
   helper_method :sort_column, :sort_direction
 
   # GET /catalogs/member_types
@@ -82,7 +84,7 @@ class Catalogs::MemberTypesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def catalogs_member_type_params
-    params.require(:catalogs_member_type).permit(:name_es, :name_en, :attrs)
+    params.require(:catalogs_member_type).permit(:name_es, :name_en, :rank, :attrs)
   end
 
   def get_attrs
@@ -95,12 +97,12 @@ class Catalogs::MemberTypesController < ApplicationController
   end
 
   def set_group_member_attrs
-    @member_attrs = GroupMember.new.attribute_names + %w[links publications] - %w[id firstname lastname photo_file_name email phone_numbers
-    group_id catalogs_member_type_id catalogs_status_id current_position_es current_position_en current_workplace created_at updated_at]
+    config = YAML.load(File.read('config/app_config.yml'))
+    @gm_attrs = config['gm_custom_attrs']
   end
 
   def sort_column
-    params[:sort] || 'name_es'
+    params[:sort] || 'rank'
   end
 
   def sort_direction

@@ -4,6 +4,8 @@ class Group < ApplicationRecord
   belongs_to :catalogs_location, :class_name => 'Catalogs::Location'
   has_many :group_members
 
+  scope :from_department, -> (group_id) {where("catalogs_department_id = ?", group_id) }
+
   def self.search(search)
     if search
       where("translate(lower(name_es),'áéíóúàèìòù', 'aeiouaeiou') LIKE translate(lower(?),'áéíóúàèìòù', 'aeiouaeiou')", "%#{search}%")

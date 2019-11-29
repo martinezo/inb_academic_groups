@@ -1,55 +1,80 @@
-%h1 Listing group_members
+// Table name singular, for url helpers
+- helper_name_s = @resources.table_name.singularize
+// Table name plural, for url helpers
+- helper_name_p = @resources.table_name
 
-%table
-  %thead
-    %tr
-      %th Group
-      %th Firstname
-      %th Lastname
-      %th Photo file name
-      %th Email
-      %th Phone numbers
-      %th Academic career es
-      %th Academic career en
-      %th Research interest es
-      %th Research interests en
-      %th Photo res file name
-      %th Photo res descr es
-      %th Photo res descr en
-      %th Catalogs member type
-      %th Catalogs status
-      %th Current position es
-      %th Current position en
-      %th Current workplace
-      %th
-      %th
-      %th
-
-  %tbody
-    - @group_members.each do |group_member|
-      %tr
-        %td= group_member.group
-        %td= group_member.firstname
-        %td= group_member.lastname
-        %td= group_member.photo_file_name
-        %td= group_member.email
-        %td= group_member.phone_numbers
-        %td= group_member.academic_career_es
-        %td= group_member.academic_career_en
-        %td= group_member.research_interest_es
-        %td= group_member.research_interests_en
-        %td= group_member.photo_res_file_name
-        %td= group_member.photo_res_descr_es
-        %td= group_member.photo_res_descr_en
-        %td= group_member.catalogs_member_type
-        %td= group_member.catalogs_status
-        %td= group_member.current_position_es
-        %td= group_member.current_position_en
-        %td= group_member.current_workplace
-        %td= link_to 'Show', group_member
-        %td= link_to 'Edit', edit_group_member_path(group_member)
-        %td= link_to 'Destroy', group_member, method: :delete, data: { confirm: 'Are you sure?' }
+- new_link = link_to_fa_button({url: eval("new_#{helper_name_s}_path"), text: t('commands.new'), html_class: 'btn-secondary', icon: 'fa-plus', remote: false})
+= render partial: 'layouts/admin_menu', locals: {title: t(@resources.table_name), index_url: eval("#{helper_name_p}_path"), new_link: new_link}
 
 %br
 
-= link_to 'New Group member', new_group_member_path
+#records
+  = render partial: 'records', locals: {hnp: helper_name_p, hns: helper_name_s}
+#show-dialog.modal{:role => "dialog", :tabindex => "-1"}
+#new-update-dialog.modal{:role => "dialog", :tabindex => "-1"}
+#delete-dialog.modal{:role => "dialog", :tabindex => "-1"}
+
+-#%p.text-center= will_paginate @resources
+%nav{"aria-label" => "..."}
+  #paginate.pagination.justify-content-center.pagination-sm
+    = will_paginate @resources, :container => false
+%br
+
+= javascript_pack_tag 'paginate', 'data-turbolinks-track': 'reload'
+
+-#
+  %h1 Listing group_members
+
+  %table
+    %thead
+      %tr
+        %th Group
+        %th Firstname
+        %th Lastname
+        %th Photo file name
+        %th Email
+        %th Phone numbers
+        %th Academic career es
+        %th Academic career en
+        %th Research interest es
+        %th Research interests en
+        %th Photo res file name
+        %th Photo res descr es
+        %th Photo res descr en
+        %th Catalogs member type
+        %th Catalogs status
+        %th Current position es
+        %th Current position en
+        %th Current workplace
+        %th
+        %th
+        %th
+
+    %tbody
+      - @group_members.each do |group_member|
+        %tr
+          %td= group_member.group
+          %td= group_member.firstname
+          %td= group_member.lastname
+          %td= group_member.photo_file_name
+          %td= group_member.email
+          %td= group_member.phone_numbers
+          %td= group_member.academic_career_es
+          %td= group_member.academic_career_en
+          %td= group_member.research_interest_es
+          %td= group_member.research_interests_en
+          %td= group_member.photo_res_file_name
+          %td= group_member.photo_res_descr_es
+          %td= group_member.photo_res_descr_en
+          %td= group_member.catalogs_member_type
+          %td= group_member.catalogs_status
+          %td= group_member.current_position_es
+          %td= group_member.current_position_en
+          %td= group_member.current_workplace
+          %td= link_to 'Show', group_member
+          %td= link_to 'Edit', edit_group_member_path(group_member)
+          %td= link_to 'Destroy', group_member, method: :delete, data: { confirm: 'Are you sure?' }
+
+  %br
+
+  = link_to 'New Group member', new_group_member_path

@@ -4,11 +4,11 @@
 #
 # To use the locales, use `I18n.t`:
 #
-#     I18n.t 'hello'
+#     I18n.t hello
 #
 # In views, this is aliased to just `t`:
 #
-#     <%= t('hello') %>
+#     <%= t(hello) %>
 #
 # To use a different locale, set it with `I18n.locale`:
 #
@@ -24,7 +24,7 @@
 # Instead, surround them with single quotes.
 #
 # en:
-#   'true': 'foo'
+#   true: foo
 #
 # To learn more, please read the Rails Internationalization guide
 # available at https://guides.rubyonrails.org/i18n.html.
@@ -33,19 +33,23 @@ es:
   titles:
     attributes: Atributos
 
+  messages:
+    choose_group: Seleccione grupo de trabajo
+    choose_member_type: Seleccione una categoría
+
   #Table names
-  catalogs_locations: "Ubicaciones"
-  catalogs_location: "Ubicación"
-  catalogs_member_types: "Tipos de miembro"
-  catalogs_member_type: "Tipo de miembro"
-  group_members: "Integrantes de grupos"
-  catalogs_pub_types: "Tipos de publicaciones"
-  catalogs_pub_tipe: "Tipo de publicación"
+  catalogs_locations: Ubicaciones
+  catalogs_location: Ubicación
+  catalogs_member_types: Tipos de miembro
+  catalogs_member_type: Tipo de miembro
+  group_members: Miembros
+  group_member: Miembro
+  catalogs_pub_types: Tipos de publicaciones
+  catalogs_pub_tipe: Tipo de publicación
   groups: Grupos
   group: Grupo
   catalogs_departments: Departamentos
   catalogs_department: Departamento
-
 
   commands:
     submit: Enviar
@@ -72,8 +76,11 @@ es:
     conclude_reserv: Cerrar solicitud efectuada
     cm_yes: Si
     cm_no: No
-    request_to_foreign_headquarter: Solicitud a sede foránea
     send: Enviar
+    show_groups: Ver grupos de trabajo
+    show_members: Ver intregantes del grupo
+    status_active: Miembro activo.
+    status_inactive: Miembro inactivo.
 
   notices:
     saved_successfully: Registro guardado correctamente.
@@ -82,6 +89,8 @@ es:
     errors_prohibited_this_from_being_saved: error(es) impiden guardar este registro.
     delete_this_record?: ¿Esta seguro que desea eliminar este registro?
     message_saved_successfully: Mensaje enviado correctamente.
+    member_activated: Miembro marcado como ACTIVO
+    member_inactivated: Miembro marcado como INACTIVO. Actualice el puesto y lugar de trabajo.
 
   will_paginate:
     previous_label: Anterior
@@ -103,7 +112,9 @@ es:
       catalogs/member_type:
         name_es: Nombre
         name_en: Nombre (inglés)
+        rank: Jerarquía
       group_member:
+        name: Nombre
         firstname: Nombre
         lastname: Apellidos
         photo_file_name: Fotorafía
@@ -118,6 +129,12 @@ es:
         photo_res_descr_en: Descipción de fotografía de investigación (inglés)
         links: Links
         publications: Publicaciones
+        group: Grupo
+        catalogs_member_type: Categoría
+        group_and_member_type: Grupo y categoría*
+        current_workplace: Lugar de trabajo actual
+        current_position_es: Puesto actual
+        current_position_en: Puesto actual (inglés)
       group:
         name_es: Nombre
         name_en: Nombre (ingés)
@@ -129,8 +146,24 @@ es:
         catalogs/location:
           attributes:
             name_es:
-              blank: "es un dato requerido."
+              blank: es un dato requerido.
+        catalogs/member_type:
+          attributes:
+            rank:
+              not_a_number: es dato requerido (1 es la mayor jerarquía).
+              greater_than: debe ser mayor o igual a 1 (donde 1 es la mayor jerarquía).
+        group_member:
+          attributes:
+            firstname:
+              blank: es un dato requerido.
+            lastname:
+              blank: es un dato requerido.
+              required:
+            group:
+              required: es un dato requerido.
+            catalogs_member_type:
+              required: es un dato requerido.
 
   simple_form:
     error_notification:
-      default_message: "Por favor revise los problemas a continuación:"
+      default_message: 'Por favor revise los problemas a continuación:'
