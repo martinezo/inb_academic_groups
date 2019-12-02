@@ -10,15 +10,18 @@
 %hr
 
 .row
+  .col-2.text-right
+    - if @resource.avatar.attached?
+      = image_tag @resource.avatar.variant(resize_to_limit: [100, 100])
+  .col-10.text-left.align-middle
+    %h5.mt-4= @resource.name
+%hr
+
+.row
   %strong.col-2.text-right= t("#{es}.group")
   .col-4= @resource.group.name_es
   %strong.col-2.text-right= t("#{es}.catalogs_member_type")
   .col-4= @resource.catalogs_member_type.name_es
-%hr
-
-.row
-  %strong.col-2.text-right= t("#{es}.name")
-  .col-10= @resource.name
 %hr
 
 .row
@@ -29,13 +32,21 @@
 %hr
 
 - @resource.catalogs_member_type.gm_attrs_arr.each do |gm_attr|
-  -if @resource.type_for_attribute(gm_attr).is_a? ActiveRecord::Type::Text
+  - case @resource.type_for_attribute(gm_attr).class.to_s
+  - when 'ActiveRecord::Type::Text'
     .row
       %strong.col-5= t("#{es}.#{gm_attr}")
-      %hr
-      .row
-        .col-12= eval("@resource.#{gm_attr}")
-  -else
+    .row
+      .col-12= eval("@resource.#{gm_attr}")
+  - when 'ActiveModel::Type::Value'
+    .row
+      %strong.col-2.text-right= t("#{es}.#{gm_attr}")
+      -if eval("@resource.#{gm_attr}.attached?")
+        -if eval("@resource.#{gm_attr}.content_type") == 'application/pdf'
+          .col-10= image_tag eval("@resource.#{gm_attr}"), size: "100x140"
+        -else
+          .col-10= image_tag eval("@resource.#{gm_attr}.variant(resize_to_limit: [300, 300])")
+  - else
     .row
       %strong.col-2.text-right= t("#{es}.#{gm_attr}")
       .col-10= eval("@resource.#{gm_attr}")

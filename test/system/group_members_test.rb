@@ -27,8 +27,8 @@ class GroupMembersTest < ApplicationSystemTestCase
     fill_in "Lastname", with: @group_member.lastname
     fill_in "Phone numbers", with: @group_member.phone_numbers
     fill_in "Photo file name", with: @group_member.photo_file_name
-    fill_in "Photo res descr en", with: @group_member.photo_res_descr_en
-    fill_in "Photo res descr es", with: @group_member.photo_res_descr_es
+    fill_in "Research photo descr en", with: @group_member.research_photo_descr_en
+    fill_in "Research photo descr es", with: @group_member.research_photo_descr_es
     fill_in "Photo res file name", with: @group_member.photo_res_file_name
     fill_in "Research interest es", with: @group_member.research_interest_es
     fill_in "Research interests en", with: @group_member.research_interests_en
@@ -55,8 +55,8 @@ class GroupMembersTest < ApplicationSystemTestCase
     fill_in "Lastname", with: @group_member.lastname
     fill_in "Phone numbers", with: @group_member.phone_numbers
     fill_in "Photo file name", with: @group_member.photo_file_name
-    fill_in "Photo res descr en", with: @group_member.photo_res_descr_en
-    fill_in "Photo res descr es", with: @group_member.photo_res_descr_es
+    fill_in "Research photo descr en", with: @group_member.research_photo_descr_en
+    fill_in "Research photo descr es", with: @group_member.research_photo_descr_es
     fill_in "Photo res file name", with: @group_member.photo_res_file_name
     fill_in "Research interest es", with: @group_member.research_interest_es
     fill_in "Research interests en", with: @group_member.research_interests_en

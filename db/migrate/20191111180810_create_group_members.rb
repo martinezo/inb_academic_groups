@@ -12,8 +12,8 @@ class CreateGroupMembers < ActiveRecord::Migration[6.0]
       t.text :research_interests_es
       t.text :research_interests_en
       t.string :photo_res_file_name
-      t.string :photo_res_descr_es
-      t.string :photo_res_descr_en
+      t.string :research_photo_descr_es
+      t.string :research_photo_descr_en
       t.references :catalogs_member_type, null: false, foreign_key: true
       t.references :catalogs_status, null: false, foreign_key: true, default: 1
       t.string :current_position_es

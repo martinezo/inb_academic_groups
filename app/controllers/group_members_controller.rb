@@ -8,6 +8,7 @@ class GroupMembersController < ApplicationController
   # GET /group_members.json
   def index
     @resources = GroupMember.search(params[:search]).order("#{sort_column} #{sort_direction}").paginate(per_page: 11, page:  params[:page])
+    #todo add serch by group
   end
 
   # GET /group_members/1
@@ -30,6 +31,7 @@ class GroupMembersController < ApplicationController
     @resource = GroupMember.new(group_member_params)
     respond_to do |format|
       if @resource.save
+        attach_active_resources
         format.html { redirect_to @resource, notice: 'Group member was successfully created.' }
         format.json { render :show, status: :created, location: @resource }
       else
@@ -44,6 +46,8 @@ class GroupMembersController < ApplicationController
   def update
     respond_to do |format|
       if @resource.update(group_member_params)
+        @resource.avatar.purge if params[:group_member][:remove_avatar] == '1'
+        @resource.research_photo.purge if params[:group_member][:remove_research_photo] == '1'
         format.html { redirect_to @resource, notice: t('notices.updated_successfully')}
         format.json { render :show, status: :ok, location: @resource }
       else
@@ -83,6 +87,11 @@ class GroupMembersController < ApplicationController
     end
   end
 
+  def attach_active_resources
+    @resource.avatar.attach(params[:avatar])
+    @resource.avatar.attach(params[:research_photo])
+  end
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_group_member
@@ -91,7 +100,7 @@ class GroupMembersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def group_member_params
-    params.require(:group_member).permit(:group_id, :firstname, :lastname, :photo_file_name, :email, :phone_numbers, :academic_career_es, :academic_career_en, :research_interests_es, :research_interests_en, :photo_res_file_name, :photo_res_descr_es, :photo_res_descr_en, :catalogs_member_type_id, :catalogs_status_id, :current_position_es, :current_position_en, :current_workplace)
+    params.require(:group_member).permit(:group_id, :firstname, :lastname, :photo_file_name, :email, :phone_numbers, :academic_career_es, :academic_career_en, :research_interests_es, :research_interests_en, :photo_res_file_name, :research_photo_descr_es, :research_photo_descr_en, :catalogs_member_type_id, :catalogs_status_id, :current_position_es, :current_position_en, :current_workplace, :avatar, :research_photo, :resume)
   end
 
   def sort_column

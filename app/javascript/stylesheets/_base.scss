@@ -154,3 +154,18 @@ footer {
 .sf-checkbox label:first-child{
   display: none;
 }
+
+// #host::shadow
+
+// FILE UPLOAD
+input[type='file']{
+  //color: transparent;
+  //display: none !important;
+}
+
+::-webkit-file-upload-button{
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 1px solid lighten($muted-color,50%);
+}

@@ -31,6 +31,8 @@ gem 'simple_form'
 gem 'bootstrap', '~> 4.3.1'
 gem 'font_awesome5_rails'
 gem 'will_paginate-bootstrap'
+# RMO For ActiveSorage
+gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

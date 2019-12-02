@@ -125,8 +125,8 @@ es:
         research_interests_es: Intereses actuales de investigación
         research_interests_en: Intereses actuales de investigación (inglés)
         photo_res_file_name: Fotografía de investigación
-        photo_res_descr_es: Descipción de fotografía de investigación
-        photo_res_descr_en: Descipción de fotografía de investigación (inglés)
+        research_photo_descr_es: Descipción de fotografía de investigación
+        research_photo_descr_en: Descipción de fotografía de investigación (inglés)
         links: Links
         publications: Publicaciones
         group: Grupo
@@ -135,6 +135,10 @@ es:
         current_workplace: Lugar de trabajo actual
         current_position_es: Puesto actual
         current_position_en: Puesto actual (inglés)
+        avatar: Fotografía
+        research_photo: Foto o imagen referente a la investigación
+        remove_attach: ¿Eliminar archivo "%{filename}"?
+        resume: Resúmen curricular (PDF)
       group:
         name_es: Nombre
         name_en: Nombre (ingés)
