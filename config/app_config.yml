@@ -17,4 +17,7 @@ gm_default_attrs:
   - current_workplace
   - current_position_es
   - current_position_en
+  - links_link
+  - links_name_es
+  - links_name_en
 

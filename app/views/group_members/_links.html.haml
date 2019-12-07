@@ -1,0 +1,14 @@
+-#= f.simple_fields_for :links do |l|
+= f.simple_fields_for :links, @resource.links do |l|
+  .col-4
+    = l.input :link, placeholder: 'www.personal.org', hint: 'URL del enlace'
+  .col-3
+    = l.input :name_es, placeholder: 'Página personal', hint: 'Nombre para mostrar'
+  .col-3
+    = l.input :name_en, placeholder: 'Personal page', hint: 'Nombre para mostrar (inglés)'
+  .col-2.text-center
+    .mt-4= link_to_fa_button({url: '/', remote: true, icon: 'fa-unlink', title: t('commands.remove_link'), html_class: 'btn-light'})
+
+-#= f.simple_fields_for :links do |l|
+  .col-4
+    = l.text_field :link, placeholder: 'www.personal.org', hint: 'URL del enlace'

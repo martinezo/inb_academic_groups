@@ -22,7 +22,7 @@
     .col-2.text-right= f.label :phone_numbers
     .col-5= f.input :phone_numbers, label: false
 
-  .row.mb-2
+  .row
     .col-2
       = f.label :avatar
     .col-3
@@ -31,14 +31,27 @@
       -if @resource.avatar.attached?
         = f.input 'remove_avatar', :as => :boolean, label: t('activerecord.attributes.group_member.remove_attach', filename: @resource.avatar.filename), wrapper_html: { class: 'sf-checkbox pl-5' }, input_html: { :checked => "unchecked"}
 
+  %hr
+
+  .group_member_links.links.pl-2
+    .row
+      .col-12
+      .m-3= link_to t('commands.add_link'), group_member_add_link_path(@resource.links.count), remote: true, class: 'btn mr-sm-2 btn-secondary', id: 'add_link_button'
+    .row{id: 'links_list'}
+      = render partial: 'links', locals: {f: f}
+
+  %hr
+
   .row.group_member_resume
-    .col-2
+    .col-3
       = f.label :resume
     .col-3.mb-2
       = f.file_field :resume, accept: 'application/pdf', id:'resume-upload'
-    .col-7.text-truncate
+    .col-6.text-truncate
       -if @resource.resume.attached?
         = f.input 'remove_resume', :as => :boolean, label: t('activerecord.attributes.group_member.remove_attach', filename: @resource.resume.filename), wrapper_html: { class: 'sf-checkbox pl-5' }, input_html: { :checked => "unchecked"}
+
+
 
   = f.input :academic_career_es, :input_html => {:rows => 10}
   = f.input :academic_career_en, :input_html => {:rows => 10}
@@ -53,8 +66,6 @@
     .col-7.text-truncate
       -if @resource.research_photo.attached?
         = f.input 'remove_research_photo', :as => :boolean, label: t('activerecord.attributes.group_member.remove_attach', filename: @resource.research_photo.filename), wrapper_html: { class: 'sf-checkbox pl-5' }, input_html: { :checked => "unchecked"}
-
-
 
   = f.input :research_photo_descr_es
   = f.input :research_photo_descr_en

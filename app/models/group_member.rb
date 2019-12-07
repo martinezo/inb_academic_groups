@@ -6,6 +6,11 @@ class GroupMember < ApplicationRecord
   belongs_to :group
   belongs_to :catalogs_member_type, class_name: 'Catalogs::MemberType'
   belongs_to :catalogs_status, class_name: 'Catalogs::Status'
+
+  has_many :member_links
+  has_many :links, through: :member_links
+
+  accepts_nested_attributes_for :links, allow_destroy: true, reject_if: :all_blank
   #todo validate text fields (length)
   #todo remove unnecessary fields
 

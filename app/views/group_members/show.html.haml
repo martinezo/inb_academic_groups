@@ -32,13 +32,13 @@
 %hr
 
 - @resource.catalogs_member_type.gm_attrs_arr.each do |gm_attr|
-  - case @resource.type_for_attribute(gm_attr).class.to_s
-  - when 'ActiveRecord::Type::Text'
+  - case gm_attr
+  - when 'academic_career_es', 'research_interests_es','academic_career_en', 'research_interests_en'
     .row
       %strong.col-5= t("#{es}.#{gm_attr}")
     .row
       .col-12= eval("@resource.#{gm_attr}")
-  - when 'ActiveModel::Type::Value'
+  - when 'resume', 'research_photo'
     .row
       %strong.col-2.text-right= t("#{es}.#{gm_attr}")
       -if eval("@resource.#{gm_attr}.attached?")
@@ -46,6 +46,13 @@
           .col-10= image_tag eval("@resource.#{gm_attr}"), size: "100x140"
         -else
           .col-10= image_tag eval("@resource.#{gm_attr}.variant(resize_to_limit: [300, 300])")
+  - when 'links'
+    - eval("@resource.#{gm_attr}").each_with_index do |link, i|
+      .row
+        %strong.col-2.text-right= t("#{es}.link") + " #{i+1}"
+        .col-10
+          = link_to link.link, link.link, target: "_blank"
+          = "(#{link.name_es}, #{link.name_en})"
   - else
     .row
       %strong.col-2.text-right= t("#{es}.#{gm_attr}")

@@ -81,6 +81,8 @@ es:
     show_members: Ver intregantes del grupo
     status_active: Miembro activo.
     status_inactive: Miembro inactivo.
+    add_link: Agregar link
+    remove_link: Eliminar link
 
   notices:
     saved_successfully: Registro guardado correctamente.
@@ -144,6 +146,10 @@ es:
         name_en: Nombre (ingés)
         catalogs_location: Ubicación
         catalogs_department: Departamento
+      link:
+        name_es: Nombre
+        name_en: Nombre (ingés)
+        link: Link
 
     errors:
       models:
@@ -167,6 +173,14 @@ es:
               required: es un dato requerido.
             catalogs_member_type:
               required: es un dato requerido.
+        link:
+          attributes:
+            link:
+              blank: es un dato requerido.
+            name_es:
+              blank: es un dato requerido.
+            name_en:
+              blank: es un dato requerido.
 
   simple_form:
     error_notification:
