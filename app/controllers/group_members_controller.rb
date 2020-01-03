@@ -19,7 +19,9 @@ class GroupMembersController < ApplicationController
   # GET /group_members/new
   def new
     @resource = GroupMember.new
-    @resource.links.build
+    #2.times do
+    #  @resource.links.build
+    #end
   end
 
   # GET /group_members/1/edit
@@ -94,8 +96,10 @@ class GroupMembersController < ApplicationController
   end
 
   def add_link
-    @resource = GroupMember.new
-    @resource.links.build
+  end
+
+  def destroy_link
+    @link_id = params[:id]
   end
 
   private
@@ -112,7 +116,8 @@ class GroupMembersController < ApplicationController
                                          :research_photo_descr_es, :research_photo_descr_en, :catalogs_member_type_id,
                                          :catalogs_status_id, :current_position_es, :current_position_en,
                                          :current_workplace, :avatar, :research_photo, :resume,
-                                         links_attributes: [:name_es, :name_en, :link])
+                                         links_attributes: [:id,
+                                                            :name_es, :name_en, :link, :_destroy])
   end
 
   def sort_column

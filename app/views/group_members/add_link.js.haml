@@ -1,3 +1,7 @@
 //var current_id = parseInt($('a#add_link_button').attr('href').match(/[0-9]+/)[0])
 //$('a#add_link_button').attr('href',$('a#add_link_button').attr('href').replace(current_id,current_id+1));
-$('#link_list').append("#{escape_javascript(render(partial: 'links'))}");
+//$('#link_list').append("#{escape_javascript(render(partial: 'new_link'))}");
+var regexp, time;
+time = new Date().getTime();
+regexp = new RegExp($('a#add_link_button').data('id'), 'g');
+$('#link_list').append($('a#add_link_button').data('fields').replace(regexp, time));

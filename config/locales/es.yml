@@ -143,12 +143,12 @@ es:
         resume: Resúmen curricular (PDF)
       group:
         name_es: Nombre
-        name_en: Nombre (ingés)
+        name_en: Nombre (inglés)
         catalogs_location: Ubicación
         catalogs_department: Departamento
       link:
         name_es: Nombre
-        name_en: Nombre (ingés)
+        name_en: Nombre (inglés)
         link: Link
 
     errors:

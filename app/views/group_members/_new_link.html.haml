@@ -1,0 +1,44 @@
+.row.m-3.link_record
+  .col-4
+    .form-group.string.required.group_member_links_link
+      =label_tag :link
+      %abbr{:title => "required"} *
+      %input#group_member_links_attributes_0_link.form-control.string.required{:name => "group_member[links_attributes][0][link]", :placeholder => "www.personal.org", :type => "text", :value => ""}/
+      %small.form-text.text-muted URL del enlace
+  .col-3
+    .form-group.string.required.group_member_links_name_es
+      %label.string.required{:for => "group_member_links_attributes_0_name_es"}
+        Nombre
+        %abbr{:title => "required"} *
+      %input#group_member_links_attributes_0_name_es.form-control.string.required{:name => "group_member[links_attributes][0][name_es]", :placeholder => "Página personal", :type => "text", :value => ""}/
+      %small.form-text.text-muted Nombre para mostrar
+  .col-3
+    .form-group.string.required.group_member_links_name_en
+      %label.string.required{:for => "group_member_links_attributes_0_name_en"}
+        Nombre (ingés)
+        %abbr{:title => "required"} *
+      %input#group_member_links_attributes_0_name_en.form-control.string.required{:name => "group_member[links_attributes][0][name_en]", :placeholder => "Personal page", :type => "text", :value => ""}/
+      %small.form-text.text-muted Nombre para mostrar (inglés)
+  .col-2.text-center
+    .mt-4
+      %a.btn.btn-light{"data-remote" => "true", :href => "/", :title => "Eliminar link"}
+        %span.fa.fa-unlink
+%input#group_member_links_attributes_0_id{:name => "group_member[links_attributes][0][id]", :type => "hidden", :value => "3"}/
+
+
+
+
+-#= simple_form_for @new_link do |l|
+  .row.m-3.link_record
+    .col-4
+      = l.input :link, placeholder: 'www.personal.org', hint: 'URL del enlace'
+    .col-3
+      = l.input :name_es, placeholder: 'Página personal', hint: 'Nombre para mostrar'
+    .col-3
+      = l.input :name_en, placeholder: 'Personal page', hint: 'Nombre para mostrar (inglés)'
+    .col-2.text-center
+      .mt-4= link_to_fa_button({url: '/', remote: true, icon: 'fa-unlink', title: t('commands.remove_link'), html_class: 'btn-light'})
+
+-#= f.simple_fields_for :links do |l|
+  .col-4
+    = l.text_field :link, placeholder: 'www.personal.org', hint: 'URL del enlace'
