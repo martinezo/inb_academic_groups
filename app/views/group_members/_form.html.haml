@@ -36,7 +36,7 @@
   .links.p-2
     .col-12
       -# = link_to t('commands.add_link'), group_member_add_link_path(@resource.links.count), remote: true, class: 'btn mr-sm-2 btn-secondary', id: 'add_link_button', data: {id: 1}
-      = link_to_add_row t('commands.add_link'), group_member_add_link_path, f, :links, class: 'btn mr-sm-2 btn-secondary', remote: true, id: 'add_link_button'
+      = link_to_add_row t('commands.add_link'), group_member_add_link_path(@resource.links.count), f, :links, class: 'btn mr-sm-2 btn-secondary', remote: true, id: 'add_link_button'
     #link_list
       = f.simple_fields_for :links do |builder|
         = render 'link', l: builder
