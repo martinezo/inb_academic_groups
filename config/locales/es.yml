@@ -40,10 +40,10 @@ es:
   #Table names
   catalogs_locations: Ubicaciones
   catalogs_location: Ubicación
-  catalogs_member_types: Tipos de miembro
+  catalogs_member_types: Tipos de integrantes
   catalogs_member_type: Tipo de miembro
-  group_members: Miembros
-  group_member: Miembro
+  group_members: Integrantes
+  group_member: Integrante
   catalogs_pub_types: Tipos de publicaciones
   catalogs_pub_tipe: Tipo de publicación
   groups: Grupos
@@ -83,6 +83,7 @@ es:
     status_inactive: Miembro inactivo.
     add_link: Agregar link
     remove_link: Eliminar link
+    remove_publication: Eliminar publicación
 
   notices:
     saved_successfully: Registro guardado correctamente.
@@ -150,6 +151,11 @@ es:
         name_es: Nombre
         name_en: Nombre (inglés)
         link: Link
+      publication:
+        title: Título
+        link: Link
+        pub_date: Fecha de publicación
+        catalogs_pub_type: Tipo
 
     errors:
       models:
@@ -182,6 +188,77 @@ es:
             name_en:
               blank: es un dato requerido.
 
+        publication:
+            attributes:
+                catalogs_pub_type:
+                  required: es un dato requerido.
+                title:
+                  blank: es un dato requerido.
+
   simple_form:
     error_notification:
       default_message: 'Por favor revise los problemas a continuación:'
+
+
+  #https://github.com/svenfuchs/rails-i18n/blob/master/rails/locale/es.yml
+  date:
+    abbr_day_names:
+      - dom
+      - lun
+      - mar
+      - mié
+      - jue
+      - vie
+      - sáb
+    abbr_month_names:
+      -
+      - ene
+      - feb
+      - mar
+      - abr
+      - may
+      - jun
+      - jul
+      - ago
+      - sep
+      - oct
+      - nov
+      - dic
+    day_names:
+      - domingo
+      - lunes
+      - martes
+      - miércoles
+      - jueves
+      - viernes
+      - sábado
+    formats:
+      default: "%d/%m/%Y"
+      long: "%d de %B de %Y"
+      short: "%d de %b"
+    month_names:
+      -
+      - enero
+      - febrero
+      - marzo
+      - abril
+      - mayo
+      - junio
+      - julio
+      - agosto
+      - septiembre
+      - octubre
+      - noviembre
+      - diciembre
+    order:
+      - :day
+      - :month
+      - :year
+
+  time:
+    am: am
+    formats:
+      default: "%A, %d de %B de %Y %H:%M:%S %z"
+      long: "%d de %B de %Y %H:%M"
+      short: "%d de %b %H:%M"
+    pm: pm

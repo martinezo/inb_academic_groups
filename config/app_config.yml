@@ -20,4 +20,7 @@ gm_default_attrs:
   - links_link
   - links_name_es
   - links_name_en
-
+  - publications_title
+  - publications_catalogs_pub_type
+  - publications_pub_date
+  - publications_link

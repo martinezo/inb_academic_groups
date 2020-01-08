@@ -68,7 +68,7 @@ module ApplicationHelper
     new_object = f.object.send(association).klass.new
     id = new_object.object_id
     fields = f.simple_fields_for(association, new_object, child_index: id) do |builder|
-      render(association.to_s.singularize, l: builder)
+      render(association.to_s.singularize, b: builder)
     end
     link_to(name, path , class: "add_fields " + args[:class], remote: args[:remote], id: args[:id], data: {id: id, fields: fields.gsub("\n", "")})
   end

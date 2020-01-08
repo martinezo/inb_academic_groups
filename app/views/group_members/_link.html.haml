@@ -1,11 +1,11 @@
-.row.m-3{id: "link_record_#{local_assigns[:l].index}"}
+.row.m-3{id: "link_record_#{local_assigns[:b].index}"}
   .col-4
-    = l.input :link, placeholder: 'www.personal.org', hint: 'URL del enlace'
+    = b.input :link, placeholder: 'www.personal.org', hint: 'URL del enlace'
   .col-3
-    = l.input :name_es, placeholder: 'Página personal', hint: 'Nombre para mostrar'
+    = b.input :name_es, placeholder: 'Página personal', hint: 'Nombre para mostrar'
   .col-3
-    = l.input :name_en, placeholder: 'Personal page', hint: 'Nombre para mostrar (inglés)'
+    = b.input :name_en, placeholder: 'Personal page', hint: 'Nombre para mostrar (inglés)'
   .col-2.text-center
-    = l.input_field :_destroy, as: :hidden
-    .mt-4= link_to_fa_button({url: group_member_destroy_link_path(local_assigns[:l].index), remote: true, icon: 'fa-unlink', title: t('commands.remove_link'), html_class: 'btn-light'})
+    = b.input_field :_destroy, as: :hidden
+    .mt-4= link_to_fa_button({url: group_member_destroy_link_path(local_assigns[:b].index), remote: true, icon: 'fa-unlink', title: t('commands.remove_link'), html_class: 'btn-light'})
 

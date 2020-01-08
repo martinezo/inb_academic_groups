@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root to: 'group_members#index'
+
   resources :member_links
   resources :member_publications
   resources :group_members
@@ -8,6 +10,8 @@ Rails.application.routes.draw do
   get 'group_members/switch_status/:id' => 'group_members#switch_status', as: 'group_member_switch_status'
   get 'group_members/add_link/:id', to: 'group_members#add_link', as: 'group_member_add_link'
   get 'group_members/destroy_link/:id', to: 'group_members#destroy_link', as: 'group_member_destroy_link'
+  get 'group_members/add_publication/:id', to: 'group_members#add_publication', as: 'group_member_add_publication'
+  get 'group_members/destroy_publicacion/:id', to: 'group_members#destroy_publication', as: 'group_member_destroy_publication'
   resources :links
   resources :publications
   resources :groups

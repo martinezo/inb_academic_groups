@@ -24,10 +24,12 @@
           = t('titles.menu') + " (CurrentUser)"
           -# = t('titles.menu') + " (#{current_devise_user.login})"
         .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
-          = link_to t('titles.departments'), catalogs_locations_path, class: 'dropdown-item'
+          = link_to t('catalogs_locations'), catalogs_locations_path, class: 'dropdown-item'
+          = link_to t('catalogs_departments'), catalogs_departments_path, class: 'dropdown-item'
+          = link_to t('catalogs_member_types'), catalogs_member_types_path, class: 'dropdown-item'
+          = link_to t('catalogs_pub_types'), catalogs_pub_types_path, class: 'dropdown-item'
           .dropdown-divider
-          = link_to t('titles.members_types'), catalogs_member_types_path, class: 'dropdown-item'
-          = link_to  t('titles.status'), catalogs_statuses_path, class: 'dropdown-item'
-          = link_to t('titles.Pub_types'), catalogs_pub_types_path, class: 'dropdown-item'
+          = link_to  t('groups'), groups_path, class: 'dropdown-item'
+          = link_to  t('group_members'), group_members_path, class: 'dropdown-item'
           .dropdown-divider
           -# = link_to  t('commands.logout'), destroy_devise_user_session_path, method: :delete

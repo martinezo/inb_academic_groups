@@ -11,6 +11,10 @@ class GroupMember < ApplicationRecord
   has_many :links, through: :member_links
   accepts_nested_attributes_for :links, allow_destroy: true, reject_if: :all_blank
 
+  has_many :member_publications
+  has_many :publications, through: :member_publications
+  accepts_nested_attributes_for :publications, allow_destroy: true, reject_if: :all_blank
+
   #todo validate text fields (length)
   #todo remove unnecessary fields
 

@@ -1,11 +1,15 @@
-.row.m-3{id: "link_record_#{local_assigns[:l].index}"}
-  .col-4
-    = l.input :link, placeholder: 'www.personal.org', hint: 'URL del enlace'
-  .col-3
-    = l.input :name_es, placeholder: 'Página personal', hint: 'Nombre para mostrar'
-  .col-3
-    = l.input :name_en, placeholder: 'Personal page', hint: 'Nombre para mostrar (inglés)'
-  .col-2.text-center
-    = l.input_field :_destroy, as: :hidden
-    .mt-4= link_to_fa_button({url: group_member_destroy_link_path(local_assigns[:l].index), remote: true, icon: 'fa-unlink', title: t('commands.remove_link'), html_class: 'btn-light'})
+.pub.m-3{id: "publication_record_#{local_assigns[:b].index}"}
+  .row
+    .col-3
+      = b.association :catalogs_pub_type, label_method: :name_es
+    .col-3
+      = b.input :pub_date, as: :date, order: [:month, :year]
+    .col-5
+      = b.input :link
+    .col-1.text-center
+      = b.input_field :_destroy, as: :hidden
+      .mt-4= link_to_fa_button({url: group_member_destroy_publication_path(local_assigns[:b].index), remote: true, icon: 'fa-trash-alt', title: t('commands.remove_publication'), html_class: 'btn-light'})
+  .row
+    .col-11
+      = b.input :title, :input_html => {:rows => 7}
 

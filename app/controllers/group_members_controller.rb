@@ -102,6 +102,13 @@ class GroupMembersController < ApplicationController
     @link_id = params[:id]
   end
 
+  def add_publication
+  end
+
+  def destroy_publication
+    @publication_id = params[:id]
+  end
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_group_member
@@ -116,8 +123,8 @@ class GroupMembersController < ApplicationController
                                          :research_photo_descr_es, :research_photo_descr_en, :catalogs_member_type_id,
                                          :catalogs_status_id, :current_position_es, :current_position_en,
                                          :current_workplace, :avatar, :research_photo, :resume,
-                                         links_attributes: [:id,
-                                                            :name_es, :name_en, :link, :_destroy])
+                                         links_attributes: [:id, :name_es, :name_en, :link, :_destroy],
+                                         publications_attributes: [:id, :title, :link, :pub_date, :_destroy])
   end
 
   def sort_column

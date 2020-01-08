@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_29_002623) do
+ActiveRecord::Schema.define(version: 2020_01_05_000846) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(version: 2019_11_29_002623) do
     t.text "academic_career_en"
     t.text "research_interests_es"
     t.text "research_interests_en"
-    t.string "photo_res_file_name"
+    t.string "research_photo_file_name"
     t.string "research_photo_descr_es"
     t.string "research_photo_descr_en"
     t.bigint "catalogs_member_type_id", null: false
@@ -142,6 +142,7 @@ ActiveRecord::Schema.define(version: 2019_11_29_002623) do
     t.bigint "catalogs_pub_type_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.date "pub_date"
     t.index ["catalogs_pub_type_id"], name: "index_publications_on_catalogs_pub_type_id"
   end
 
