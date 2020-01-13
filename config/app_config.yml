@@ -1,4 +1,5 @@
 gm_custom_attrs:
+  - level
   - resume
   - academic_career_es
   - research_interests_es
@@ -24,3 +25,4 @@ gm_default_attrs:
   - publications_catalogs_pub_type
   - publications_pub_date
   - publications_link
+  - catalogs_level

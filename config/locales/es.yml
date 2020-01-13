@@ -45,11 +45,13 @@ es:
   group_members: Integrantes
   group_member: Integrante
   catalogs_pub_types: Tipos de publicaciones
-  catalogs_pub_tipe: Tipo de publicación
+  catalogs_pub_type: Tipo de publicación
   groups: Grupos
   group: Grupo
   catalogs_departments: Departamentos
   catalogs_department: Departamento
+  catalogs_level: Nivel
+  catalogs_levels: Niveles
 
   commands:
     submit: Enviar
@@ -109,6 +111,9 @@ es:
       catalogs/pub_type:
         name_es: Nombre
         name_en: Nombre (inglés)
+      catalogs/level:
+        name_es: Nombre
+        name_en: Nombre (inglés)
       catalogs/department:
         name_es: Nombre
         name_en: Nombre (inglés)
@@ -142,6 +147,7 @@ es:
         research_photo: Foto o imagen referente a la investigación
         remove_attach: ¿Eliminar archivo "%{filename}"?
         resume: Resúmen curricular (PDF)
+        level: Nivel
       group:
         name_es: Nombre
         name_en: Nombre (inglés)
@@ -162,6 +168,18 @@ es:
         catalogs/location:
           attributes:
             name_es:
+              blank: es un dato requerido.
+        catalogs/pub_type:
+            attributes:
+              name_es:
+                blank: es un dato requerido.
+              name_en:
+                blank: es un dato requerido.
+        catalogs/level:
+          attributes:
+            name_es:
+              blank: es un dato requerido.
+            name_en:
               blank: es un dato requerido.
         catalogs/member_type:
           attributes:
