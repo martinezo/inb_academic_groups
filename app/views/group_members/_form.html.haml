@@ -31,7 +31,13 @@
       -if @resource.avatar.attached?
         = f.input 'remove_avatar', :as => :boolean, label: t('activerecord.attributes.group_member.remove_attach', filename: @resource.avatar.filename), wrapper_html: { class: 'sf-checkbox pl-5' }, input_html: { :checked => "unchecked"}
 
+  %br
+  .row.group_member_level
+    .col-2= f.label :level
+    .col-5= f.association :catalogs_level, label_method: :name_es, label: false
+
   %hr
+
 
   .group_member_links.links.p-2
     .row

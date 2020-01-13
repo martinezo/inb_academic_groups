@@ -11,6 +11,10 @@ class GroupMembersController < ApplicationController
     #todo add serch by group
   end
 
+  def by_group
+    @resources = GroupMember.from_group(params[:group_id]).search(params[:search]).order("#{sort_column} #{sort_direction}").paginate(per_page: 11, page:  params[:page])
+  end
+
   # GET /group_members/1
   # GET /group_members/1.json
   def show
@@ -120,11 +124,11 @@ class GroupMembersController < ApplicationController
     params.require(:group_member).permit(:group_id, :firstname, :lastname, :photo_file_name, :email,
                                          :phone_numbers, :academic_career_es, :academic_career_en,
                                          :research_interests_es, :research_interests_en, :photo_res_file_name,
-                                         :research_photo_descr_es, :research_photo_descr_en, :catalogs_member_type_id,
+                                         :research_photo_descr_es, :research_photo_descr_en,
                                          :catalogs_status_id, :current_position_es, :current_position_en,
-                                         :current_workplace, :avatar, :research_photo, :resume,
+                                         :current_workplace, :avatar, :research_photo, :resume, :catalogs_level_id,
                                          links_attributes: [:id, :name_es, :name_en, :link, :_destroy],
-                                         publications_attributes: [:id, :title, :link, :pub_date, :_destroy])
+                                         publications_attributes: [:id, :catalogs_pub_type_id, :title, :link, :pub_date, :_destroy])
   end
 
   def sort_column

@@ -1,0 +1,3 @@
+// Table name singular, for url helpers
+- helper_name_s = @resource.class.table_name.singularize
+$('#show-dialog').html("#{escape_javascript(render(partial: 'show', layout: 'layouts/modal', locals: {title: t(helper_name_s), hns: helper_name_s} ))}");

@@ -1,21 +1,17 @@
-- es = "activerecord.attributes.group"
+- es = "activerecord.attributes.catalogs/level"
 = flash_messages(flash)
 
 %table.table.table-striped.table-hover
   %thead
     %tr.row.ml-0.mr-0
-      -if(params[:department_id])
-        %th.col-9{:scope => "col"}= sortable 'name_es', t("#{es}.name_es"),  by_department_url(params[:department_id])
-      - else
-        %th.col-9{:scope => "col"}= sortable 'name_es', t("#{es}.name_es"),  eval("#{hnp}_path")
-      %th.col-3{:scope => "col"}
+      %th.col-10{:scope => "col"}= sortable 'name_es', t("#{es}.name_es"),  eval("#{hnp}_path")
+      %th.col-2{:scope => "col"}
   %tbody
     - @resources.each do |resource|
       -#if can? :update, resource
       %tr.row.ml-0.mr-0
-        %td.col-9.text-truncate= resource.name_es
-        %td.col-3.text-center
-          = link_to_fa_button({url: by_group_url(resource), icon: 'fa-users', title: t('commands.show_members'), remote: false, html_class: 'btn-light'})
+        %td.col-10.text-truncate= resource.name_es
+        %td.col-2.text-center
           = link_to_fa_button({url: resource, icon: 'fa-eye', title: t('commands.show'), data: {toggle: 'modal', target: '#show-dialog'}, html_class: 'btn-light'})
           = link_to_fa_button({url: eval("edit_#{hns}_path(resource)"), icon: 'fa-pencil-alt', title: t('commands.edit'), data: {toggle: 'modal', target: '#new-update-dialog'}, html_class: 'btn-light'})
           = link_to_fa_button({url: eval("#{hns}_delete_path(resource)"), icon: 'fa-trash-alt', title: t('commands.delete'), data: {toggle: 'modal', target: '#delete-dialog'}, html_class: 'btn-light'})

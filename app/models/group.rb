@@ -4,7 +4,7 @@ class Group < ApplicationRecord
   belongs_to :catalogs_location, :class_name => 'Catalogs::Location'
   has_many :group_members
 
-  scope :from_department, -> (group_id) {where("catalogs_department_id = ?", group_id) }
+  scope :from_department, -> (department_id) {where("catalogs_department_id = ?", department_id) }
 
   def self.search(search)
     if search

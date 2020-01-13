@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_05_000846) do
+ActiveRecord::Schema.define(version: 2020_01_09_014423) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,13 @@ ActiveRecord::Schema.define(version: 2020_01_05_000846) do
   end
 
   create_table "catalogs_departments", force: :cascade do |t|
+    t.string "name_es"
+    t.string "name_en"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "catalogs_levels", force: :cascade do |t|
     t.string "name_es"
     t.string "name_en"
     t.datetime "created_at", precision: 6, null: false
@@ -94,6 +101,8 @@ ActiveRecord::Schema.define(version: 2020_01_05_000846) do
     t.string "current_workplace"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "catalogs_level_id", default: 1, null: false
+    t.index ["catalogs_level_id"], name: "index_group_members_on_catalogs_level_id"
     t.index ["catalogs_member_type_id"], name: "index_group_members_on_catalogs_member_type_id"
     t.index ["catalogs_status_id"], name: "index_group_members_on_catalogs_status_id"
     t.index ["group_id"], name: "index_group_members_on_group_id"
@@ -147,6 +156,7 @@ ActiveRecord::Schema.define(version: 2020_01_05_000846) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "group_members", "catalogs_levels"
   add_foreign_key "group_members", "catalogs_member_types"
   add_foreign_key "group_members", "catalogs_statuses"
   add_foreign_key "group_members", "groups"
