@@ -83,6 +83,7 @@ es:
     status_inactive: Miembro inactivo.
     add_link: Agregar link
     remove_link: Eliminar link
+    add_publication: Agregar publicación
     remove_publication: Eliminar publicación
 
   notices:

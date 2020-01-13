@@ -1,10 +1,10 @@
 .row.m-3{id: "link_record_#{local_assigns[:b].index}"}
   .col-4
-    = b.input :link, placeholder: 'www.personal.org', hint: 'URL del enlace'
+    = b.input :link, hint: 'URL del enlace, ej. https://orcid.org/0000-0000-0000-000X'
   .col-3
-    = b.input :name_es, placeholder: 'Página personal', hint: 'Nombre para mostrar'
+    = b.input :name_es, hint: 'Nombre para mostrar, ej. ORCID'
   .col-3
-    = b.input :name_en, placeholder: 'Personal page', hint: 'Nombre para mostrar (inglés)'
+    = b.input :name_en, hint: 'Nombre para mostrar (inglés), ej. ORCID'
   .col-2.text-center
     = b.input_field :_destroy, as: :hidden
     .mt-4= link_to_fa_button({url: group_member_destroy_link_path(local_assigns[:b].index), remote: true, icon: 'fa-unlink', title: t('commands.remove_link'), html_class: 'btn-light'})

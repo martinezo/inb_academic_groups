@@ -1,7 +1,7 @@
 .pub.m-3{id: "publication_record_#{local_assigns[:b].index}"}
   .row
     .col-3
-      = b.association :catalogs_pub_type, label_method: :name_es
+      = b.association :catalogs_pub_type, label_method: :name_es,  selected: '1'
     .col-3
       = b.input :pub_date, as: :date, order: [:month, :year]
     .col-5

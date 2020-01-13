@@ -20,7 +20,7 @@
     .col-2= f.label :email
     .col-3= f.input :email, label: false, as: :email
     .col-2.text-right= f.label :phone_numbers
-    .col-5= f.input :phone_numbers, label: false
+    .col-5= f.input :phone_numbers, label: false, hint: 'Incluir clave lada del México y el número a 10 dígitos: (52) 442 XXXXXXX'
 
   .row
     .col-2
@@ -34,9 +34,11 @@
   %hr
 
   .group_member_links.links.p-2
-    .col-12
-      -# = link_to t('commands.add_link'), group_member_add_link_path(@resource.links.count), remote: true, class: 'btn mr-sm-2 btn-secondary', id: 'add_link_button', data: {id: 1}
-      = link_to_add_row t('commands.add_link'), group_member_add_link_path(@resource.links.count), f, :links, class: 'btn mr-sm-2 btn-secondary', remote: true, id: 'add_link_button'
+    .row
+      .col-2
+        = link_to_add_row t('commands.add_link'), group_member_add_link_path(@resource.links.count), f, :links, class: 'btn mr-sm-2 btn-secondary', remote: true, id: 'add_link_button'
+      .col-10.mt-3
+        Links relevantes : página del grupo, ORCID, ResearchGate, PubFacts, Tweeter académico, blog académico, etc.
     #link_list
       = f.simple_fields_for :links do |builder|
         = render 'link', b: builder
@@ -44,9 +46,13 @@
   %hr
 
   .group_member_publications.publications.p-2
-    .col-12
-      -# = link_to t('commands.add_link'), group_member_add_link_path(@resource.links.count), remote: true, class: 'btn mr-sm-2 btn-secondary', id: 'add_link_button', data: {id: 1}
-      = link_to_add_row t('commands.add_publication'), group_member_add_publication_path(@resource.publications.count), f, :publications, class: 'btn mr-sm-2 btn-secondary', remote: true, id: 'add_publication_button'
+    .row
+      .col-3
+        = link_to_add_row t('commands.add_publication'), group_member_add_publication_path(@resource.publications.count), f, :publications, class: 'btn mr-sm-2 btn-secondary', remote: true, id: 'add_publication_button'
+      .col-9.mt-3
+        Artículos y revisiones, capítulos de libros, otras. Formato recomendado
+        %strong PubMed
+        resumido. Máximo 10.
     #publication_list
       = f.simple_fields_for :publications do |builder|
         = render 'publication', b: builder
