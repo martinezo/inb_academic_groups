@@ -62,7 +62,7 @@
   - when 'publications'
     - eval("@resource.#{gm_attr}").each_with_index do |pub, i|
       .row
-        %strong.col-2.text-right= t("#{es}.publication") + " #{i+1}"
+        %strong.col-2.text-right= t('publication') + " #{i+1}"
         .col-10
           = pub.title
   - else

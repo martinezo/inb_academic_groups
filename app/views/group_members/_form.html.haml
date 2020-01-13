@@ -74,10 +74,10 @@
       -if @resource.resume.attached?
         = f.input 'remove_resume', :as => :boolean, label: t('activerecord.attributes.group_member.remove_attach', filename: @resource.resume.filename), wrapper_html: { class: 'sf-checkbox pl-5' }, input_html: { :checked => "unchecked"}
 
-  = f.input :academic_career_es, :input_html => {:rows => 10}
-  = f.input :academic_career_en, :input_html => {:rows => 10}
-  = f.input :research_interests_es, :input_html => {:rows => 10}
-  = f.input :research_interests_en, :input_html => {:rows => 10}
+  = f.input :academic_career_es, :input_html => {:rows => 5, maxlength: 500}, placeholder: t('messages.max_chars', chars: 500)
+  = f.input :academic_career_en, :input_html => {:rows => 5, maxlength: 500}, placeholder: t('messages.max_chars', chars: 500)
+  = f.input :research_interests_es, :input_html => {:rows => 10, maxlength: 2000}, placeholder: t('messages.max_chars', chars: 2000)
+  = f.input :research_interests_en, :input_html => {:rows => 10, maxlength: 2000}, placeholder: t('messages.max_chars', chars: 2000)
 
   .row.group_member_research_photo
     .col-2
@@ -88,8 +88,11 @@
       -if @resource.research_photo.attached?
         = f.input 'remove_research_photo', :as => :boolean, label: t('activerecord.attributes.group_member.remove_attach', filename: @resource.research_photo.filename), wrapper_html: { class: 'sf-checkbox pl-5' }, input_html: { :checked => "unchecked"}
 
-  = f.input :research_photo_descr_es
-  = f.input :research_photo_descr_en
+  = f.input :research_photo_descr_es, :input_html => { maxlength: 180}, placeholder: t('messages.max_chars', chars: 180)
+  = f.input :research_photo_descr_en, :input_html => { maxlength: 180}, placeholder: t('messages.max_chars', chars: 180)
+
+  %p Llenar la siguiente sección sólo para ex-miebros del grupo de trabajo:
+  %hr
 
   .row
     .col-2= f.label t('activerecord.attributes.group_member.current_workplace')

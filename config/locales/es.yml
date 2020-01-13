@@ -36,6 +36,7 @@ es:
   messages:
     choose_group: Seleccione grupo de trabajo
     choose_member_type: Seleccione una categoría
+    max_chars: "Máximo %{chars} caracteres incluyendo espacios."
 
   #Table names
   catalogs_locations: Ubicaciones
@@ -52,6 +53,7 @@ es:
   catalogs_department: Departamento
   catalogs_level: Nivel
   catalogs_levels: Niveles
+  publication: Publicación
 
   commands:
     submit: Enviar
@@ -159,7 +161,7 @@ es:
         name_en: Nombre (inglés)
         link: Link
       publication:
-        title: Título
+        title: Cita
         link: Link
         pub_date: Fecha de publicación
         catalogs_pub_type: Tipo
