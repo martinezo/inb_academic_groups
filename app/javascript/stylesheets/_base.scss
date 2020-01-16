@@ -97,13 +97,9 @@ a:focus#navbarDropdown{
 //END PAGINATE
 
 #r-header{
-//  background-image: url('http://dummyimage.com/970x100/A9BF5A/2C4001&text=Agenda');
-  height: 100px;
-  border: 1 solid red;
-}
-
-#r-header{
-  margin-bottom: 1em;
+  background-image: url('../images/header_bg.png') ;
+  max-width: 100%;
+  height: auto;
 }
 
 .r-btn-search{

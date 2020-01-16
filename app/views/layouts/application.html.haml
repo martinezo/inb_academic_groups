@@ -8,6 +8,8 @@
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     %body
+      #r-header.m-0
+        = image_pack_tag 'header.png', class: 'mx-auto d-block img-fluid mb-4'
       .container
         #r-content
           = yield

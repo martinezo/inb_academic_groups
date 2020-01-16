@@ -124,7 +124,7 @@ class GroupMembersController < ApplicationController
     params.require(:group_member).permit(:group_id, :firstname, :lastname, :photo_file_name, :email,
                                          :phone_numbers, :academic_career_es, :academic_career_en,
                                          :research_interests_es, :research_interests_en, :photo_res_file_name,
-                                         :research_photo_descr_es, :research_photo_descr_en,
+                                         :research_photo_descr_es, :research_photo_descr_en, :catalogs_member_type_id,
                                          :catalogs_status_id, :current_position_es, :current_position_en,
                                          :current_workplace, :avatar, :research_photo, :resume, :catalogs_level_id,
                                          links_attributes: [:id, :name_es, :name_en, :link, :_destroy],
