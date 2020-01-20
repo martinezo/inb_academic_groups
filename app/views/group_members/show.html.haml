@@ -4,9 +4,14 @@
 
 = flash_messages(flash)
 
+- link_to_close = link_to "<span class='fas fa-times'></span> #{t('commands.close')}".html_safe,
+  params[:group_id].nil? ? group_members_path : by_group_path(params[:group_id]), class: "button btn btn-secondary"
+- link_to_edit = link_to_fa_button({url: edit_group_member_path(id: @resource, group_id: params[:group_id]),
+  remote: false, icon: 'fa-pencil-alt', title: t('commands.edit'), text: t('commands.edit'),  html_class: 'btn-primary'})
+
 .text-right
-  = link_to "<span class='fas fa-times'></span> #{t('commands.close')}".html_safe, group_members_path, class: "button btn btn-secondary"
-  = link_to_fa_button({url: edit_group_member_path(@resource), remote: false, icon: 'fa-pencil-alt', title: t('commands.edit'), text: t('commands.edit'),  html_class: 'btn-primary'})
+  = link_to_close.html_safe
+  = link_to_edit.html_safe
 %hr
 
 .row
@@ -87,5 +92,5 @@
 %hr
 
 .text-right
-  = link_to "<span class='fas fa-times'></span> #{t('commands.close')}".html_safe, group_members_path, class: "button btn btn-secondary"
-  = link_to_fa_button({url: edit_group_member_path(@resource), remote: false, icon: 'fa-pencil-alt', title: t('commands.edit'), text: t('commands.edit'),  html_class: 'btn-primary'})
+  = link_to_close.html_safe
+  = link_to_edit.html_safe

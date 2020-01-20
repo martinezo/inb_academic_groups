@@ -39,7 +39,7 @@ class GroupMembersController < ApplicationController
     respond_to do |format|
       if @resource.save
         attach_active_resources
-        format.html { redirect_to @resource, notice: 'Group member was successfully created.' }
+        format.html { redirect_to group_member_path(id: @resource, group_id: params[:group_id]), notice: 'Group member was successfully created.' }
         format.json { render :show, status: :created, location: @resource }
       else
         format.html { render :new }
@@ -55,7 +55,7 @@ class GroupMembersController < ApplicationController
       if @resource.update(group_member_params)
         @resource.avatar.purge if params[:group_member][:remove_avatar] == '1'
         @resource.research_photo.purge if params[:group_member][:remove_research_photo] == '1'
-        format.html { redirect_to @resource, notice: t('notices.updated_successfully')}
+        format.html { redirect_to group_member_path(id: @resource, group_id: params[:group_id]), notice: t('notices.updated_successfully')}
         format.json { render :show, status: :ok, location: @resource }
       else
         format.html { render :edit }

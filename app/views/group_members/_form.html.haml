@@ -1,15 +1,22 @@
 -# frozen_string_literal: true
 = simple_form_for @resource, remote: false do |f|
 
+  - link_to_close = link_to "<span class='fas fa-times'></span> #{t('commands.close')}".html_safe,
+    params[:group_id].nil? ? group_members_path : by_group_path(params[:group_id]), class: "button btn btn-secondary"
+  - link_to_save = f.button :submit, t('commands.save'), class: "btn-primary"
+
+  - unless params[:group_id].nil?
+    = hidden_field_tag :group_id, params[:group_id]
+
   .text-right
-    = link_to "<span class='fas fa-times'></span> #{t('commands.close')}".html_safe, group_members_path, class: "button btn btn-secondary"
-    = f.button :submit, t('commands.save'), class: "btn-primary"
+    = link_to_close.html_safe
+    = link_to_save.html_safe
   %hr
 
   = f.error_notification
   .row
     .col-2= f.label t('activerecord.attributes.group_member.group_and_member_type')
-    .col-5= f.association :group, label_method: :name_es, prompt: t('messages.choose_group'), label: false
+    .col-5= f.association :group, label_method: :name_es, prompt: t('messages.choose_group'), label: false, selected: params[:group_id]
     .col-5= f.association :catalogs_member_type, collection: Catalogs::MemberType.order('rank'), label_method: :name_es, prompt: t('messages.choose_member_type'), label: false
   .row
     .col-2= f.label :firstname
@@ -106,5 +113,5 @@
 
   %hr
   .text-right
-    = link_to "<span class='fas fa-times'></span> #{t('commands.close')}".html_safe, group_members_path, class: "button btn btn-secondary"
-    = f.button :submit, t('commands.save'), class: "btn-primary"
+    = link_to_close.html_safe
+    = link_to_save.html_safe

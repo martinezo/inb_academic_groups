@@ -3,14 +3,18 @@
 // Table name plural, for url helpers
 - helper_name_p = @resources.table_name
 
-- new_link = link_to_fa_button({url: eval("new_#{helper_name_s}_path"), text: t('commands.new'), html_class: 'btn-secondary', icon: 'fa-plus', remote: false})
-= render partial: 'layouts/admin_menu', locals: {title: t(@resources.table_name), index_url: eval("#{helper_name_p}_path"), new_link: new_link}
+- new_link = link_to_fa_button({url: new_group_member_path(group_id: params[:group_id]), text: t('commands.new'), html_class: 'btn-secondary', icon: 'fa-plus', remote: false})
+= render partial: 'layouts/admin_menu', locals: {title: t(@resources.table_name), index_url: by_group_path(params[:group_id]), new_link: new_link}
 
-%p.text-center.alert.alert-secondary.mt-2.mb-1.h5
-  =Group.find(params[:group_id]).name_es
+.container.p-0
+  .row
+    .col-12
+      .text-center.alert.alert-secondary.mt-2.mb-2.h5
+        = link_to_fa_button({url: :back, icon: 'fa-long-arrow-alt-left', html_class: 'link pt-1', remote: false, title: t('commands.back_to_groups') })
+        = Group.find(params[:group_id]).name_es
 
 #records
-  = render partial: 'records', locals: {hnp: helper_name_p, hns: helper_name_s}
+  = render partial: 'records', locals: {hnp: 'by_group', hns: helper_name_s}
 #show-dialog.modal{:role => "dialog", :tabindex => "-1"}
 #new-update-dialog.modal{:role => "dialog", :tabindex => "-1"}
 #delete-dialog.modal{:role => "dialog", :tabindex => "-1"}

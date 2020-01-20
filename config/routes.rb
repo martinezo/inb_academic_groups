@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root to: 'group_members#index'
+  root to: 'groups#index'
 
   namespace :catalogs do
     resources :levels

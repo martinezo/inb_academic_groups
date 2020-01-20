@@ -89,6 +89,7 @@ es:
     remove_link: Eliminar link
     add_publication: Agregar publicación
     remove_publication: Eliminar publicación
+    back_to_groups: Regresar a grupos
 
   notices:
     saved_successfully: Registro guardado correctamente.
