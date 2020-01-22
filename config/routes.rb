@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users, class_name: "Admin::User"
   root to: 'groups#index'
 
   namespace :catalogs do

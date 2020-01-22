@@ -32,6 +32,7 @@
 es:
   titles:
     attributes: Atributos
+    login: Iniciar sesión
 
   messages:
     choose_group: Seleccione grupo de trabajo
@@ -166,6 +167,10 @@ es:
         link: Link
         pub_date: Fecha de publicación
         catalogs_pub_type: Tipo
+      admin/user:
+        login: Usuario
+        password: Contraseña
+        remember_me: Recordarme
 
     errors:
       models:
@@ -220,6 +225,17 @@ es:
   simple_form:
     error_notification:
       default_message: 'Por favor revise los problemas a continuación:'
+
+  devise:
+    sessions:
+      user:
+        signed_in: 'Sessión de usuario iniciada correctamente'
+
+    failure:
+      already_authenticated: Session de usuario ya iniciada
+      user:
+        unauthenticated: 'Para continuar es necesario iniciar sesión'
+        invalid: 'Usuario o contraseña inválidos'
 
 
   #https://github.com/svenfuchs/rails-i18n/blob/master/rails/locale/es.yml

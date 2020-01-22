@@ -21,8 +21,7 @@
     %ul.navbar-nav.ml-auto
       %li.nav-item.dropdown
         %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-          = t('titles.menu') + " (CurrentUser)"
-          -# = t('titles.menu') + " (#{current_devise_user.login})"
+          = t('titles.menu') + " (#{current_user.login})"
         .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
           = link_to t('catalogs_locations'), catalogs_locations_path, class: 'dropdown-item'
           = link_to t('catalogs_departments'), catalogs_departments_path, class: 'dropdown-item'
@@ -34,3 +33,4 @@
           = link_to  t('group_members'), group_members_path, class: 'dropdown-item'
           .dropdown-divider
           -# = link_to  t('commands.logout'), destroy_devise_user_session_path, method: :delete
+          = link_to  t('commands.logout'), destroy_user_session_path, method: :delete, class: 'dropdown-item'
