@@ -1,0 +1,1 @@
+$('#new-update-dialog').html("#{escape_javascript(render(partial: 'form', layout: 'layouts/modal', locals: {title: t(@resource.class.table_name.singularize)} ))}");

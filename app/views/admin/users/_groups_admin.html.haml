@@ -1,0 +1,14 @@
+-# frozen_string_literal: true
+= simple_form_for :groups_admin, remote: true, html: { class: 'form-horizontal' },  wrapper: :horizontal_form, wrapper_mappings: {check_boxes: :horizontal_radio_and_checkboxes, radio_buttons: :horizontal_radio_and_checkboxes, file: :horizontal_file_input, boolean: :horizontal_boolean } do |f|
+
+  = f.error_notification
+
+  - Group.all.each do |group|
+    - checked = (@user.admin_group? group)? 'checked' : ''
+    - label_class = (checked == 'checked')? 'font-weight-bold' : ' '
+    = f.input group.id, :as => :boolean, label: group.name_es, wrapper_html: { class: 'sf-checkbox pl-5' }, input_html: { checked: checked}, label_html: {class: label_class}
+
+  .modal-footer
+  .text-right
+    = button_tag "<span class='fas fa-times'></span> #{t('commands.close')}".html_safe, data: { dismiss: "modal", type: 'button'}, class: 'button btn btn-secondary'
+    = f.button :submit, t('commands.save'), class: "btn-primary"

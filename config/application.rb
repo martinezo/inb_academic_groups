@@ -18,7 +18,7 @@ module InbAcademicGroups
 
     # RMO: Set the default locale to Spanish
     config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
-    config.i18n.available_locales = [:es]
+    config.i18n.available_locales = [:es, :devise]
     config.i18n.default_locale = :es
   end
 end

@@ -43,5 +43,11 @@ Rails.application.routes.draw do
     resources :departments
     get 'departments/delete/:id' => 'departments#delete', as: 'department_delete'
   end
+  namespace :admin do
+    resources :users
+    get 'users/delete/:id' => 'users#delete', as: 'user_delete'
+    get 'users/groups_admin/:id' => 'users#edit_groups_admin', as: 'edit_groups_admin'
+    post 'users/groups_admin/:id' => 'users#update_groups_admin', as: 'update_groups_admin'
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

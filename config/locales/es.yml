@@ -33,6 +33,7 @@ es:
   titles:
     attributes: Atributos
     login: Iniciar sesión
+    groups_it_manages: Grupos que administra
 
   messages:
     choose_group: Seleccione grupo de trabajo
@@ -55,6 +56,8 @@ es:
   catalogs_level: Nivel
   catalogs_levels: Niveles
   publication: Publicación
+  admin_users: Usuarios
+  admin_user: Usuario
 
   commands:
     submit: Enviar
@@ -91,6 +94,7 @@ es:
     add_publication: Agregar publicación
     remove_publication: Eliminar publicación
     back_to_groups: Regresar a grupos
+    edit_admin_groups: Configurar administración de grupos.
 
   notices:
     saved_successfully: Registro guardado correctamente.
@@ -101,6 +105,7 @@ es:
     message_saved_successfully: Mensaje enviado correctamente.
     member_activated: Miembro marcado como ACTIVO
     member_inactivated: Miembro marcado como INACTIVO. Actualice el puesto y lugar de trabajo.
+    admin_groups_config_updated: Configuración de grupos administrados actualizada correctamente.
 
   will_paginate:
     previous_label: Anterior
@@ -171,6 +176,9 @@ es:
         login: Usuario
         password: Contraseña
         remember_me: Recordarme
+        name: Nombre
+        super_user: Administrador del sistema
+        admin: Admin.
 
     errors:
       models:
@@ -222,6 +230,15 @@ es:
                 title:
                   blank: es un dato requerido.
 
+        admin/user:
+            attributes:
+              name:
+                blank: es un dato requerido.
+              login:
+                blank: es un dato requerido.
+              email:
+                blank: es un dato requerido.
+
   simple_form:
     error_notification:
       default_message: 'Por favor revise los problemas a continuación:'
@@ -234,9 +251,9 @@ es:
     failure:
       already_authenticated: Session de usuario ya iniciada
       user:
+        timeout: 'Por favor regístrese de nuevo'
         unauthenticated: 'Para continuar es necesario iniciar sesión'
         invalid: 'Usuario o contraseña inválidos'
-
 
   #https://github.com/svenfuchs/rails-i18n/blob/master/rails/locale/es.yml
   date:

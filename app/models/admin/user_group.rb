@@ -1,4 +1,4 @@
 class Admin::UserGroup < ApplicationRecord
-  belongs_to :admin_user
+  belongs_to :user, class_name: 'Admin::User'
   belongs_to :group
 end

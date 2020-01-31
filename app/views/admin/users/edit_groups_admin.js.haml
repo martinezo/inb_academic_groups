@@ -1,0 +1,2 @@
+- title = "#{t('titles.groups_it_manages')} #{@user.name}"
+$('#edit-groups-admin-dialog').html("#{escape_javascript(render(partial: 'groups_admin', layout: 'layouts/modal', locals: {title: title} ))}");

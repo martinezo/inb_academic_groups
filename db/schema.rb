@@ -37,12 +37,12 @@ ActiveRecord::Schema.define(version: 2020_01_21_165258) do
   end
 
   create_table "admin_user_groups", force: :cascade do |t|
-    t.bigint "admin_user_id", null: false
+    t.bigint "user_id", null: false
     t.bigint "group_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["admin_user_id"], name: "index_admin_user_groups_on_admin_user_id"
     t.index ["group_id"], name: "index_admin_user_groups_on_group_id"
+    t.index ["user_id"], name: "index_admin_user_groups_on_user_id"
   end
 
   create_table "admin_users", force: :cascade do |t|
@@ -176,7 +176,7 @@ ActiveRecord::Schema.define(version: 2020_01_21_165258) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "admin_user_groups", "admin_users"
+  add_foreign_key "admin_user_groups", "admin_users", column: "user_id"
   add_foreign_key "admin_user_groups", "groups"
   add_foreign_key "group_members", "catalogs_levels"
   add_foreign_key "group_members", "catalogs_member_types"

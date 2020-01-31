@@ -87,6 +87,8 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-i18n (1.9.0)
+      devise (>= 4.7.1)
     devise_ldap_authenticatable (0.8.6)
       devise (>= 3.4.1)
       net-ldap (>= 0.16.0)
@@ -271,6 +273,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   devise
+  devise-i18n
   devise_ldap_authenticatable
   font_awesome5_rails
   haml-rails

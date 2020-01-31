@@ -33,4 +33,7 @@
           = link_to  t('group_members'), group_members_path, class: 'dropdown-item'
           .dropdown-divider
           -# = link_to  t('commands.logout'), destroy_devise_user_session_path, method: :delete
+          = link_to  t('admin_user'), admin_users_path, class: 'dropdown-item'
+          .dropdown-divider
+          -# = link_to  t('commands.logout'), destroy_devise_user_session_path, method: :delete
           = link_to  t('commands.logout'), destroy_user_session_path, method: :delete, class: 'dropdown-item'

@@ -42,8 +42,9 @@ module ApplicationHelper
   end
 
   def flash_messages(flash)
-    success, error, warning, info, f_messages = '','','','',''
+    success, error, warning, info, alert, f_messages = '','','','','',''
     flash.each do |name, msg|
+
       case name
       when 'success'
         success << msg
@@ -51,6 +52,11 @@ module ApplicationHelper
         error << msg
       when 'warning'
         warning << msg
+      when 'alert'
+        warning << msg
+      when 'timedout'
+        puts 'here'
+        #todo review i18n for
       else
         info << msg
       end
