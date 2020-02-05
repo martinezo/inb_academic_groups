@@ -16,7 +16,11 @@
   = f.error_notification
   .row
     .col-2= f.label t('activerecord.attributes.group_member.group_and_member_type')
-    .col-5= f.association :group, label_method: :name_es, prompt: t('messages.choose_group'), label: false, selected: params[:group_id]
+    - if params[:group_id]
+      .col-5= f.association :group, label_method: :name_es, prompt: t('messages.choose_group'), label: false, selected: params[:group_id], disabled: true
+    -else
+      .col-5= f.association :group, collection: current_user.admin_groups_collection, label_method: :name_es, prompt: t('messages.choose_group'), label: false
+
     .col-5= f.association :catalogs_member_type, collection: Catalogs::MemberType.order('rank'), label_method: :name_es, prompt: t('messages.choose_member_type'), label: false
   .row
     .col-2= f.label :firstname

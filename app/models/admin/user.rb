@@ -16,6 +16,22 @@ class Admin::User < ApplicationRecord
   end
 
   def admin_group?(group_id)
-    groups.where(id: group_id).size >= 1
+    groups.where(id: group_id).size >= 1 || super_user
+  end
+
+  def admin_groups
+    if super_user
+      Group.pluck(:id)
+    else
+      groups.pluck(:id)
+    end
+  end
+
+  def admin_groups_collection
+    if super_user
+      Group.all
+    else
+      groups
+    end
   end
 end

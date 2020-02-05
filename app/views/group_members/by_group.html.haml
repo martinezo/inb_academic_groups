@@ -10,7 +10,7 @@
   .row
     .col-12
       .text-center.alert.alert-secondary.mt-2.mb-2.h5
-        = link_to_fa_button({url: :back, icon: 'fa-long-arrow-alt-left', html_class: 'link pt-1', remote: false, title: t('commands.back_to_groups') })
+        = link_to_fa_button({url: groups_path, icon: 'fa-long-arrow-alt-left', html_class: 'link pt-1', remote: false, title: t('commands.back_to_groups') })
         = Group.find(params[:group_id]).name_es
 
 #records

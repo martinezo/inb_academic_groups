@@ -7,12 +7,11 @@ class GroupMembersController < ApplicationController
   # GET /group_members
   # GET /group_members.json
   def index
-    @resources = GroupMember.search(params[:search]).order("#{sort_column} #{sort_direction}").paginate(per_page: 11, page:  params[:page])
-    #todo add serch by group
+    @resources = GroupMember.search(params[:search]).where(group_id: current_user.admin_groups).order("#{sort_column} #{sort_direction}").paginate(per_page: 11, page:  params[:page])
   end
 
   def by_group
-    @resources = GroupMember.from_group(params[:group_id]).search(params[:search]).order("#{sort_column} #{sort_direction}").paginate(per_page: 11, page:  params[:page])
+    @resources = GroupMember.from_group(params[:group_id]).where(group_id: current_user.admin_groups).search(params[:search]).order("#{sort_column} #{sort_direction}").paginate(per_page: 11, page:  params[:page])
   end
 
   # GET /group_members/1
@@ -36,6 +35,7 @@ class GroupMembersController < ApplicationController
   # POST /group_members.json
   def create
     @resource = GroupMember.new(group_member_params)
+    authorize @resource
     respond_to do |format|
       if @resource.save
         attach_active_resources
@@ -64,12 +64,20 @@ class GroupMembersController < ApplicationController
     end
   end
 
+  def delete
+    @group_id = params[:group_id]
+  end
+
   # DELETE /group_members/1
   # DELETE /group_members/1.json
   def destroy
     @resource.destroy
     respond_to do |format|
-      format.html { redirect_to group_members_url, flash: {warning: t('notices.destroyed') }}
+      if params[:group_id]
+        format.html { redirect_to by_group_path(params[:group_id]), flash: {warning: t('notices.destroyed') }}
+      else
+        format.html { redirect_to group_members_url, flash: {warning: t('notices.destroyed') }}
+      end
       format.json { head :no_content }
     end
   end
