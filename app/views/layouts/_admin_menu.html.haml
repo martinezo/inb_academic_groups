@@ -23,17 +23,18 @@
         %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
           = t('titles.menu') + " (#{current_user.login})"
         .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
-          = link_to t('catalogs_locations'), catalogs_locations_path, class: 'dropdown-item'
-          = link_to t('catalogs_departments'), catalogs_departments_path, class: 'dropdown-item'
-          = link_to t('catalogs_member_types'), catalogs_member_types_path, class: 'dropdown-item'
-          = link_to t('catalogs_pub_types'), catalogs_pub_types_path, class: 'dropdown-item'
-          = link_to t('catalogs_levels'), catalogs_levels_path, class: 'dropdown-item'
-          .dropdown-divider
+          - if current_user.super_user
+            = link_to t('catalogs_locations'), catalogs_locations_path, class: 'dropdown-item'
+            = link_to t('catalogs_departments'), catalogs_departments_path, class: 'dropdown-item'
+            = link_to t('catalogs_member_types'), catalogs_member_types_path, class: 'dropdown-item'
+            = link_to t('catalogs_pub_types'), catalogs_pub_types_path, class: 'dropdown-item'
+            = link_to t('catalogs_levels'), catalogs_levels_path, class: 'dropdown-item'
+            .dropdown-divider
           = link_to  t('groups'), groups_path, class: 'dropdown-item'
           = link_to  t('group_members'), group_members_path, class: 'dropdown-item'
           .dropdown-divider
-          -# = link_to  t('commands.logout'), destroy_devise_user_session_path, method: :delete
-          = link_to  t('admin_user'), admin_users_path, class: 'dropdown-item'
+          - if current_user.super_user
+            = link_to  t('admin_user'), admin_users_path, class: 'dropdown-item'
           .dropdown-divider
           -# = link_to  t('commands.logout'), destroy_devise_user_session_path, method: :delete
           = link_to  t('commands.logout'), destroy_user_session_path, method: :delete, class: 'dropdown-item'

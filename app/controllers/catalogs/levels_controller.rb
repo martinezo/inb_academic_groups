@@ -6,11 +6,13 @@ class Catalogs::LevelsController < ApplicationController
   # GET /catalogs/levels.json
   def index
     @resources = Catalogs::Level.search(params[:search]).order("#{sort_column} #{sort_direction}").paginate(per_page: 11, page:  params[:page])
+    authorize @resources
   end
 
   # GET /catalogs/levels/1
   # GET /catalogs/levels/1.json
   def show
+    authorize @resource
     respond_to do |format|
       format.html
       format.js
@@ -20,10 +22,12 @@ class Catalogs::LevelsController < ApplicationController
   # GET /catalogs/levels/new
   def new
     @resource = Catalogs::Level.new
+    authorize @resource
   end
 
   # GET /catalogs/levels/1/edit
   def edit
+    authorize @resource
   end
 
   # POST /catalogs/levels
@@ -60,6 +64,10 @@ class Catalogs::LevelsController < ApplicationController
       end
       format.js
     end
+  end
+
+  def delete
+    authorize @resource
   end
 
   # DELETE /catalogs/levels/1

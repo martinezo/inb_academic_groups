@@ -9,11 +9,13 @@ class Catalogs::MemberTypesController < ApplicationController
   # GET /catalogs/member_types.json
   def index
     @resources = Catalogs::MemberType.search(params[:search]).order("#{sort_column} #{sort_direction}").paginate(per_page: 11, page:  params[:page])
+    authorize @resources
   end
 
   # GET /catalogs/member_types/1
   # GET /catalogs/member_types/1.json
   def show
+    authorize @resource
     respond_to do |format|
       format.html
       format.js
@@ -23,10 +25,13 @@ class Catalogs::MemberTypesController < ApplicationController
   # GET /catalogs/member_types/new
   def new
     @resource = Catalogs::MemberType.new
+    authorize @resource
   end
 
   # GET /catalogs/member_types/1/edit
-  def edit; end
+  def edit
+    authorize @resource
+  end
 
   # POST /catalogs/member_types
   # POST /catalogs/member_types.json
@@ -63,6 +68,10 @@ class Catalogs::MemberTypesController < ApplicationController
       end
       format.js
     end
+  end
+
+  def delete
+    authorize @resource
   end
 
   # DELETE /catalogs/member_types/1

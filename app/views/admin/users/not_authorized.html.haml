@@ -1,0 +1,6 @@
+
+.container
+  = flash_messages(flash)
+  .col-12.text-center
+    = link_to t('commands.logout'), destroy_user_session_path, method: :delete, class: 'btn btn-danger'
+

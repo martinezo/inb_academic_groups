@@ -6,11 +6,13 @@ class Catalogs::LocationsController < ApplicationController
   # GET /catalogs/locations.json
   def index
     @resources = Catalogs::Location.search(params[:search]).order("#{sort_column} #{sort_direction}").paginate(per_page: 11, page:  params[:page])
+    authorize @resources
   end
 
   # GET /catalogs/locations/1
   # GET /catalogs/locations/1.json
   def show
+    authorize @resource
     respond_to do |format|
       format.html
       format.js
@@ -20,10 +22,12 @@ class Catalogs::LocationsController < ApplicationController
   # GET /catalogs/locations/new
   def new
     @resource = Catalogs::Location.new
+    authorize @resource
   end
 
   # GET /catalogs/locations/1/edit
   def edit
+    authorize @resource
   end
 
   # POST /catalogs/locations
@@ -63,6 +67,10 @@ class Catalogs::LocationsController < ApplicationController
          format.js
        end
      end
+  end
+
+  def delete
+    authorize @resource
   end
 
   # DELETE /catalogs/locations/1z

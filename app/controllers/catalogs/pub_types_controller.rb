@@ -6,11 +6,14 @@ class Catalogs::PubTypesController < ApplicationController
   # GET /catalogs/pub_types.json
   def index
     @resources = Catalogs::PubType.search(params[:search]).order("#{sort_column} #{sort_direction}").paginate(per_page: 11, page:  params[:page])
+    authorize @resources
   end
+
 
   # GET /catalogs/pub_types/1
   # GET /catalogs/pub_types/1.json
   def show
+    authorize @resource
     respond_to do |format|
       format.html
       format.js
@@ -20,10 +23,13 @@ class Catalogs::PubTypesController < ApplicationController
   # GET /catalogs/pub_types/new
   def new
     @resource = Catalogs::PubType.new
+    authorize @resource
   end
 
   # GET /catalogs/pub_types/1/edit
-  def edit; end
+  def edit
+    authorize @resource
+  end
 
   # POST /catalogs/pub_types
   # POST /catalogs/pub_types.json
@@ -61,6 +67,10 @@ class Catalogs::PubTypesController < ApplicationController
         format.js
       end
     end
+  end
+
+  def delete
+    authorize @resource
   end
 
   # DELETE /catalogs/pub_types/1

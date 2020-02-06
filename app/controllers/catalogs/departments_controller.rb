@@ -6,11 +6,13 @@ class Catalogs::DepartmentsController < ApplicationController
   # GET /catalogs/departments.json
   def index
     @resources = Catalogs::Department.search(params[:search]).order("#{sort_column} #{sort_direction}").paginate(per_page: 11, page:  params[:page])
+    authorize @resources
   end
 
   # GET /catalogs/departments/1
   # GET /catalogs/departments/1.json
   def show
+    authorize @resource
     respond_to do |format|
       format.html
       format.js
@@ -20,10 +22,12 @@ class Catalogs::DepartmentsController < ApplicationController
   # GET /catalogs/departments/new
   def new
     @resource = Catalogs::Department.new
+    authorize @resource
   end
 
   # GET /catalogs/departments/1/edit
   def edit
+    authorize @resource
   end
 
   # POST /catalogs/departments
@@ -60,6 +64,10 @@ class Catalogs::DepartmentsController < ApplicationController
       end
       format.js
     end
+  end
+
+  def delete
+    authorize @resource
   end
 
   # DELETE /catalogs/departments/1

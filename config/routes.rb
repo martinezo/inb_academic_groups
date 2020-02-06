@@ -45,6 +45,7 @@ Rails.application.routes.draw do
   end
   namespace :admin do
     resources :users
+    get 'not_authorized' => 'users#not_authorized', as: 'user_not_authorized'
     get 'users/delete/:id' => 'users#delete', as: 'user_delete'
     get 'users/groups_admin/:id' => 'users#edit_groups_admin', as: 'edit_groups_admin'
     post 'users/groups_admin/:id' => 'users#update_groups_admin', as: 'update_groups_admin'

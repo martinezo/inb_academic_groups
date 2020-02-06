@@ -6,11 +6,13 @@ class Admin::UsersController < ApplicationController
   # GET /admin/users.json
   def index
     @resources= Admin::User.search(params[:search]).order("#{sort_column} #{sort_direction}").paginate(per_page: 11, page:  params[:page])
+    authorize @resources
   end
 
   # GET /admin/users/1
   # GET /admin/users/1.json
   def show
+    authorize @resource
     respond_to do |format|
       format.html
       format.js
@@ -20,10 +22,12 @@ class Admin::UsersController < ApplicationController
   # GET /admin/users/new
   def new
     @resource = Admin::User.new
+    authorize @resource
   end
 
   # GET /admin/users/1/edit
   def edit
+    authorize @resource
   end
 
   # POST /admin/users
@@ -62,6 +66,10 @@ class Admin::UsersController < ApplicationController
     end
   end
 
+  def delete
+    authorize @resource
+  end
+
   # DELETE /admin/users/1
   # DELETE /admin/users/1.json
   def destroy
@@ -91,10 +99,13 @@ class Admin::UsersController < ApplicationController
     end
   end
 
+  def not_authorized; end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_admin_user
       @resource = Admin::User.find(params[:id])
+      authorize @resource
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

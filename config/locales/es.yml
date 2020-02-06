@@ -106,6 +106,7 @@ es:
     member_activated: Miembro marcado como ACTIVO
     member_inactivated: Miembro marcado como INACTIVO. Actualice el puesto y lugar de trabajo.
     admin_groups_config_updated: Configuración de grupos administrados actualizada correctamente.
+    not_authorized: Usuario no autorizado para esta operación
 
   will_paginate:
     previous_label: Anterior
