@@ -37,4 +37,3 @@ yarn-debug.log*
 /Gemfile.lock
 /.ruby-version
 /db/schema.rb
-/.ruby-version
