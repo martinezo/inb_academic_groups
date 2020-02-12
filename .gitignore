@@ -34,7 +34,7 @@ yarn-debug.log*
 /config/database.yml
 /.idea
 /db/schema.rb
-/Gemfile.lock
+Gemfile.lock
 .ruby-version
 /db/schema.rb
 /config/secret.yml
