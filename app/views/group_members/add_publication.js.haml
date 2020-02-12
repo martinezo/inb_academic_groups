@@ -1,4 +1,4 @@
 var regexp, time;
 time = new Date().getTime();
 regexp = new RegExp($('a#add_publication_button').data('id'), 'g');
-$('#publication_list').append($('a#add_publication_button').data('fields').replace(regexp, time));
+$('#publication_list').prepend($('a#add_publication_button').data('fields').replace(regexp, time));

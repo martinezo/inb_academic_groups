@@ -130,7 +130,7 @@ class GroupMembersController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def group_member_params
     params.require(:group_member).permit(:group_id, :firstname, :lastname, :photo_file_name, :email,
-                                         :phone_numbers, :academic_career_es, :academic_career_en,
+                                         :phone_numbers, :academic_career_es, :academic_career_en, :activities_or_topics_es, :activities_or_topics_en,
                                          :research_interests_es, :research_interests_en, :photo_res_file_name,
                                          :research_photo_descr_es, :research_photo_descr_en, :catalogs_member_type_id,
                                          :catalogs_status_id, :current_position_es, :current_position_en,

@@ -6,6 +6,7 @@ gm_custom_attrs:
   - research_photo
   - links
   - publications
+  - activities_or_topics_es
 
 gm_default_attrs:
   - firstname

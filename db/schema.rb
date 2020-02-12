@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_21_165258) do
+ActiveRecord::Schema.define(version: 2020_02_12_195919) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -122,6 +122,8 @@ ActiveRecord::Schema.define(version: 2020_01_21_165258) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "catalogs_level_id", default: 1, null: false
+    t.text "activities_or_topics_es"
+    t.text "activities_or_topics_en"
     t.index ["catalogs_level_id"], name: "index_group_members_on_catalogs_level_id"
     t.index ["catalogs_member_type_id"], name: "index_group_members_on_catalogs_member_type_id"
     t.index ["catalogs_status_id"], name: "index_group_members_on_catalogs_status_id"

@@ -159,6 +159,8 @@ es:
         remove_attach: ¿Eliminar archivo "%{filename}"?
         resume: Resúmen curricular (PDF)
         level: Nivel
+        activities_or_topics_es: Actividades o temas de trabajo
+        activities_or_topics_en: Actividades o temas de trabajo (inglés)
       group:
         name_es: Nombre
         name_en: Nombre (inglés)
