@@ -80,6 +80,8 @@ test:
 #
 production:
   <<: *default
-  database: inb_academic_groups_production
-  username: inb_academic_groups
-  password: <%= ENV['INB_ACADEMIC_GROUPS_DATABASE_PASSWORD'] %>
+  database: inb_academic_groups
+  username: db_user
+  password: 1NBunam
+  host: 132.248.142.10
+#password: d$<%= ENV['INB_ACADEMIC_GROUPS_DATABASE_PASSWORD'] %>
