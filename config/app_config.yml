@@ -1,12 +1,21 @@
 gm_custom_attrs:
   - level
   - resume
-  - academic_career_es
-  - research_interests_es
-  - research_photo
+  - academic_career:
+    - academic_career_es
+    - academic_career_en
+  - research_interests:
+    - research_interests_es
+    - research_interests_en
+  - activities_or_topics:
+    - activities_or_topics_es
+    - activities_or_topics_en
+  - research_photo:
+    - research_photo
+    - research_photo_descr_es
+    - research_photo_descr_en
   - links
   - publications
-  - activities_or_topics_es
 
 gm_default_attrs:
   - firstname

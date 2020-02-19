@@ -83,10 +83,10 @@ class GroupMembersController < ApplicationController
   end
 
   def fields_setup
-    config = YAML.safe_load(File.read('config/app_config.yml'))
-    gm_default_attrs = config['gm_default_attrs']
-    @gm_attrs = Catalogs::MemberType.find(params[:id]).gm_attrs_arr + gm_default_attrs
-    @gm_attrs.map!{|attr| "group_member_#{attr}"}
+    member_type = Catalogs::MemberType.find(params[:id])
+    gm_attrs = member_type.get_full_custom_attrs + member_type.get_default_attrs
+    @gm_attrs = gm_attrs.map!{|attr| "group_member_#{attr}"}
+    puts @gm_attrs
   end
 
   def switch_status

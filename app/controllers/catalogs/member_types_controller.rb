@@ -102,16 +102,17 @@ class Catalogs::MemberTypesController < ApplicationController
       a << p[0][5..] if (p[0].start_with? 'attr_') && p[1] == '1'
     end
 
-    a+=['research_photo_descr_es','research_photo_descr_en'] if a.include? 'research_photo'
-    a.append 'academic_career_en' if a.include? 'academic_career_es'
-    a.append 'research_interests_en' if a.include? 'research_interests_es'
-    a.append 'activities_or_topics_en' if a.include? 'activities_or_topics_es'
+    #a+=['research_photo_descr_es','research_photo_descr_en'] if a.include? 'research_photo'
+    #a.append 'academic_career_en' if a.include? 'academic_career_es'
+    #a.append 'research_interests_en' if a.include? 'research_interests_es'
+    #a.append 'activities_or_topics_en' if a.include? 'activities_or_topics_es'
     a.join ','
   end
 
   def set_group_member_attrs
     config = YAML.load(File.read('config/app_config.yml'))
-    @gm_attrs = config['gm_custom_attrs']
+    #@gm_attrs = config['gm_custom_attrs'].select {|n| n.is_a? String}
+    @gm_attrs = config['gm_custom_attrs'].map {|e| (e.is_a? Hash) ? e.keys[0] : e }
   end
 
   def sort_column

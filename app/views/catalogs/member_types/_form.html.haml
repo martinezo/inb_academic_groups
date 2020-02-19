@@ -10,7 +10,7 @@
   = t("titles.attributes")
   %hr
   - @gm_attrs.each do |attr|
-    -if @resource.attrs_include? attr
+    -if @resource.attrs_includes? attr
       = f.input "attr_#{attr}", :as => :boolean, label: t("activerecord.attributes.group_member.#{attr}"), wrapper_html: { class: 'sf-checkbox pl-5' }, input_html: { :checked => "checked"}
     -else
       = f.input "attr_#{attr}", :as => :boolean, label: t("activerecord.attributes.group_member.#{attr}"), wrapper_html: { class: 'sf-checkbox pl-5' }, input_html: { :checked => "unchecked"}

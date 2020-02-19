@@ -139,8 +139,10 @@ es:
         photo_file_name: Fotorafía
         email: Correo
         phone_numbers: Teléfono(s)
+        academic_career: Trayectoria académica
         academic_career_es: Trayectoria académica
         academic_career_en: Trayectoria académica (inglés)
+        research_interests: Intereses actuales de investigación
         research_interests_es: Intereses actuales de investigación
         research_interests_en: Intereses actuales de investigación (inglés)
         photo_res_file_name: Fotografía de investigación
@@ -159,6 +161,7 @@ es:
         remove_attach: ¿Eliminar archivo "%{filename}"?
         resume: Resúmen curricular (PDF)
         level: Nivel
+        activities_or_topics: Actividades o temas de trabajo
         activities_or_topics_es: Actividades o temas de trabajo
         activities_or_topics_en: Actividades o temas de trabajo (inglés)
       group:
