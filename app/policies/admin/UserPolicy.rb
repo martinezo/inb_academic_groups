@@ -15,6 +15,10 @@ class Admin::UserPolicy < ApplicationPolicy
     @user.super_user
   end
 
+  def update_groups_admin?
+    @user.super_user
+  end
+
   def new?
     @user.super_user
   end
