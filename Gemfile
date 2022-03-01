@@ -32,7 +32,7 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'font_awesome5_rails'
 gem 'will_paginate-bootstrap'
 # RMO For ActiveSorage
-gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.12'
 gem 'devise'
 gem 'devise_ldap_authenticatable'
 gem 'devise-i18n'
